@@ -28,14 +28,7 @@ public class LevelBehaviour : MonoBehaviour
 
     void MoveTarget(Vector3 direction)
     {
-        if (direction.z > 0)
-        {
-            player.transform.eulerAngles = new Vector3(0, 0, 0);
-        }
-        else if (direction.z < 0)
-        {
-            player.transform.eulerAngles = new Vector3(0, -180f, 0);
-        }
+        
         LeanTween.move(terrain, terrain.transform.position + new Vector3(0,0, -direction.z) / 2, timeAnim / 2).setEase(LeanTweenType.easeOutCirc);
     }
     }

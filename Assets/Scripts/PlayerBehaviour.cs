@@ -36,10 +36,18 @@ public class PlayerBehaviour : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0, -90f, 0);
         }
-       
-        LeanTween.move(player, player.transform.position + (direction + Vector3.up) / 2, timeAnim / 2).setOnComplete(() =>
+        else if (direction.z > 0)
         {
-            LeanTween.move(player, player.transform.position + (direction - Vector3.up) / 2, timeAnim / 2);
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else if (direction.z < 0)
+        {
+            transform.eulerAngles = new Vector3(0, -180f, 0);
+        }
+
+        LeanTween.move(player, player.transform.position + (new Vector3(direction.x, 0,0) + Vector3.up) / 2, timeAnim / 2).setOnComplete(() =>
+        {
+            LeanTween.move(player, player.transform.position + (new Vector3(direction.x, 0, 0) - Vector3.up) / 2, timeAnim / 2);
         });
     }
 }
