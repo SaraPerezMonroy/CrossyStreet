@@ -9,6 +9,8 @@ public class LevelBehaviour : MonoBehaviour
     public float timeAnim = 0.4f;
     public GameObject player;
 
+    public PlayerBehaviour playerBehaviour;
+
     private void Awake()
     {
         terrain = this.gameObject;
@@ -28,7 +30,11 @@ public class LevelBehaviour : MonoBehaviour
 
     void MoveTarget(Vector3 direction)
     {
-        
-        LeanTween.move(terrain, terrain.transform.position + new Vector3(0,0, -direction.z) / 2, timeAnim / 2).setEase(LeanTweenType.easeOutCirc);
+        if (playerBehaviour.canJump && playerBehaviour != null)
+        {
+            LeanTween.move(terrain, terrain.transform.position + new Vector3(0, 0, -direction.normalized.z), timeAnim).setEase(LeanTweenType.easeOutCirc);
+        }
     }
-    }
+
+
+}

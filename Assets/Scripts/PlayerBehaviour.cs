@@ -9,6 +9,9 @@ public class PlayerBehaviour : MonoBehaviour
     public GameObject player;
     public float timeAnim = 0.4f;
 
+    public bool canJump;
+
+
     private void Awake()
     {
         player = this.gameObject;
@@ -28,26 +31,36 @@ public class PlayerBehaviour : MonoBehaviour
 
     void MoveTarget(Vector3 direction)
     {
-        if (direction.x > 0)
+        if(canJump)
         {
-            transform.eulerAngles = new Vector3(0, 90f, 0);
-        }
-        else if(direction.x < 0)
-        {
-            transform.eulerAngles = new Vector3(0, -90f, 0);
-        }
-        else if (direction.z > 0)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-        }
-        else if (direction.z < 0)
-        {
-            transform.eulerAngles = new Vector3(0, -180f, 0);
-        }
+            if (direction.x > 0)
+            {
+                transform.eulerAngles = new Vector3(0, 90f, 0);
+            }
+            else if (direction.x < 0)
+            {
+                transform.eulerAngles = new Vector3(0, -90f, 0);
+            }
+            else if (direction.z > 0)
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else if (direction.z < 0)
+            {
+                transform.eulerAngles = new Vector3(0, -180f, 0);
+            }
 
-        LeanTween.move(player, player.transform.position + (new Vector3(direction.x, 0,0) + Vector3.up) / 2, timeAnim / 2).setOnComplete(() =>
+            LeanTween.move(player, player.transform.position + (new Vector3(direction.x, 0, 0) + Vector3.up) / 2, timeAnim / 2).setOnComplete(() =>
+            {
+                LeanTween.move(player, player.transform.position + (new Vector3(direction.x, 0, 0) - Vector3.up) / 2, timeAnim / 2);
+            });
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Terrain"))
         {
-            LeanTween.move(player, player.transform.position + (new Vector3(direction.x, 0, 0) - Vector3.up) / 2, timeAnim / 2);
-        });
+            canJump = true;
+        }
     }
 }
