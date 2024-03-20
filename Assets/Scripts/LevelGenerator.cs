@@ -21,12 +21,7 @@ public class LevelGenerator : MonoBehaviour
 
     public void RecycleTerrain(GameObject terrain)
     {
-        ObjectPool.RecycleObject(terrainPrefab, terrain);
+
     }
 
-    public void NewZone()
-    {
-        GameObject terrain = ObjectPool.GetObject(terrainPrefab);
-        terrain.transform.position = spawn.transform.position;
-    }
 }

@@ -11,7 +11,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public bool canJump;
 
-    public static RaycastHit m_RaycastDirection;
+    public static RaycastHit rayCast;
     private void Awake()
     {
         player = this.gameObject;
@@ -33,33 +33,32 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if(canJump)
         {
-            RaycastHit m_Hitinfo;
-            Vector3 m_MoveDirection = direction.normalized;
-            if (Physics.Raycast(transform.position + new Vector3(0, 1f, 0), m_MoveDirection, out m_Hitinfo, 1f))
+            RaycastHit hitInfo;
+            Vector3 directionMove = direction.normalized;
+            if (Physics.Raycast(transform.position + new Vector3(0, 1f, 0), directionMove, out hitInfo, 1f))
             {
-                Debug.Log("Hit Something, Restricting Movement");
-                m_RaycastDirection = m_Hitinfo;
-                if (m_MoveDirection.x != 0)
+                rayCast = hitInfo;
+                if (directionMove.x != 0)
                 {
-                    m_MoveDirection.x = 0;
+                    directionMove.x = 0;
                 }
             }
 
-            if (m_MoveDirection != Vector3.zero)
+            if (directionMove != Vector3.zero)
             {
-                if (m_MoveDirection.x > 0)
+                if (directionMove.x > 0)
                 {
                     transform.eulerAngles = new Vector3(0, 90f, 0);
                 }
-                else if (m_MoveDirection.x < 0)
+                else if (directionMove.x < 0)
                 {
                     transform.eulerAngles = new Vector3(0, -90f, 0);
                 }
-                else if (m_MoveDirection.z > 0)
+                else if (directionMove.z > 0)
                 {
                     transform.eulerAngles = new Vector3(0, 0, 0);
                 }
-                else if (m_MoveDirection.z < 0)
+                else if (directionMove.z < 0)
                 {
                     transform.eulerAngles = new Vector3(0, -180f, 0);
                 }

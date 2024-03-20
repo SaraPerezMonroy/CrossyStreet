@@ -38,13 +38,13 @@ public class LevelBehaviour : MonoBehaviour
 
     void MoveTarget(Vector3 m_Direction)
     {
-        RaycastHit raycastHit = PlayerBehaviour.m_RaycastDirection;
+        RaycastHit raycastHit = PlayerBehaviour.rayCast;
 
         if (playerBehaviour != null && playerBehaviour.canJump && canMove)
         {
             if (Physics.Raycast(playerBehaviour.transform.position + new Vector3(0, 1f, 0), m_Direction, out raycastHit, 1f))
             {
-                if (raycastHit.collider.tag != "ProceduralTerrain")
+                if (!raycastHit.collider.CompareTag("ProceduralTerrain"))
                 {
                     if (m_Direction.z != 0)
                     {
