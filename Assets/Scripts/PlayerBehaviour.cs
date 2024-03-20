@@ -11,7 +11,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public bool canJump;
 
-
+    public static RaycastHit m_RaycastDirection;
     private void Awake()
     {
         player = this.gameObject;
@@ -33,34 +33,50 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if(canJump)
         {
-            if (direction.x > 0)
+            RaycastHit m_Hitinfo;
+            Vector3 m_MoveDirection = direction.normalized;
+            if (Physics.Raycast(transform.position + new Vector3(0, 1f, 0), m_MoveDirection, out m_Hitinfo, 1f))
             {
-                transform.eulerAngles = new Vector3(0, 90f, 0);
+                Debug.Log("Hit Something, Restricting Movement");
+                m_RaycastDirection = m_Hitinfo;
+                if (m_MoveDirection.x != 0)
+                {
+                    m_MoveDirection.x = 0;
+                }
             }
-            else if (direction.x < 0)
+
+            if (m_MoveDirection != Vector3.zero)
             {
-                transform.eulerAngles = new Vector3(0, -90f, 0);
-            }
-            else if (direction.z > 0)
-            {
-                transform.eulerAngles = new Vector3(0, 0, 0);
-            }
-            else if (direction.z < 0)
-            {
-                transform.eulerAngles = new Vector3(0, -180f, 0);
-            }
+                if (m_MoveDirection.x > 0)
+                {
+                    transform.eulerAngles = new Vector3(0, 90f, 0);
+                }
+                else if (m_MoveDirection.x < 0)
+                {
+                    transform.eulerAngles = new Vector3(0, -90f, 0);
+                }
+                else if (m_MoveDirection.z > 0)
+                {
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                }
+                else if (m_MoveDirection.z < 0)
+                {
+                    transform.eulerAngles = new Vector3(0, -180f, 0);
+                }
 
             LeanTween.move(player, player.transform.position + (new Vector3(direction.x, 0, 0) + Vector3.up) / 2, timeAnim / 2).setOnComplete(() =>
             {
                 LeanTween.move(player, player.transform.position + (new Vector3(direction.x, 0, 0) - Vector3.up) / 2, timeAnim / 2);
             });
+            canJump = false;
+            }
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Terrain"))
+        if (collision.gameObject.CompareTag("Terrain") || collision.gameObject.CompareTag("ProceduralTerrain"))
         {
-            canJump = true;
+            canJump = true; 
         }
     }
 }

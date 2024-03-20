@@ -61,7 +61,7 @@ public class ObjectPool : MonoBehaviour
         copiaPrefab.SetActive(true);
         return copiaPrefab;
     }
-    public static void RecicleObject(GameObject prefab, GameObject objectToRecicle) 
+    public static void RecycleObject(GameObject prefab, GameObject objectToRecicle) 
     {
         int id = prefab.GetInstanceID();
         pool[id].Enqueue(objectToRecicle); 
