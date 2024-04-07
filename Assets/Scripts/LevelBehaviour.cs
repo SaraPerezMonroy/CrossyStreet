@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LevelBehaviour : MonoBehaviour
@@ -9,21 +8,43 @@ public class LevelBehaviour : MonoBehaviour
     public PlayerBehaviour playerBehaviour;
 
     public float offset = 100f;
-    public float animationDuration = 0.25f;    
-    public bool canMove = true;
-    public GameObject terrain;
+    public float animationDuration = 0.25f;
 
-    public int stepsCounter;
+    [SerializeField]
+    GameObject terrain;
+    [SerializeField] 
+    GameObject player;
 
-    private bool isRecycled = false;
-    public int counter = 0;
-
+    private int record = 0;
+    public int steps = 0;
+    [SerializeField] 
+    TextMeshProUGUI textSteps;
 
     public void Awake()
     {
         terrain = this.gameObject;
     }
 
+    public void Start()
+    {
+        steps = PlayerPrefs.GetInt("Steps: ", 0);
+        record = PlayerPrefs.GetInt("Record: ", 0);
+        UpdateTextSteps();
+    }
+
+    public void Update()
+    {
+        PlayerPrefs.SetInt("Steps", steps);
+        PlayerPrefs.Save();
+
+        if (steps > record)
+        {
+            record = steps;
+            PlayerPrefs.SetInt("Record", record);
+            PlayerPrefs.Save();
+        }
+        UpdateTextSteps();
+    }
 
     public void OnEnable()
     {
@@ -35,53 +56,54 @@ public class LevelBehaviour : MonoBehaviour
         swipeController.OnSwipe -= MoveTarget;
     }
 
-    void MoveTarget(Vector3 m_Direction)
+    public void MoveTarget(Vector3 t_Direction)
     {
-        RaycastHit raycastHit = PlayerBehaviour.rayCast;
-
-        if (playerBehaviour != null && playerBehaviour.canJump && canMove)
+        if (Mathf.Abs(t_Direction.x) > Mathf.Abs(t_Direction.z))
         {
-            if (Physics.Raycast(playerBehaviour.transform.position + new Vector3(0, 1f, 0), m_Direction, out raycastHit, 1f))
+            return;
+        }
+
+        RaycastHit t_HitInfo = PlayerBehaviour.rayCast;
+
+        if (playerBehaviour.canJump)
+        {
+            if (Physics.Raycast(player.transform.position + new Vector3(0, 1f, 0), t_Direction, out t_HitInfo, 1f))
             {
-                if (!raycastHit.collider.CompareTag("ProceduralTerrain"))
+                Debug.Log("Hit Something, Restricting Movement");
+                if (t_HitInfo.collider.tag != "ProceduralTerrain")
                 {
-                    if (m_Direction.z != 0)
+                    if (t_Direction.z != 0)
                     {
-                        m_Direction.z = 0;
+                        t_Direction.z = 0;
                     }
                 }
-            }
-            if (m_Direction != Vector3.zero)
-            {
-                LeanTween.move(terrain, terrain.transform.position + new Vector3(0, 0, -m_Direction.normalized.z), animationDuration).setEase(LeanTweenType.easeOutQuad);
+
+                Debug.DrawRay(transform.position + new Vector3(0, 1f, 0), transform.forward * t_HitInfo.distance, Color.red);
             }
 
-            Debug.Log(stepsCounter);
-            if (m_Direction.normalized.z == 1)
+            if (t_Direction != Vector3.zero)
             {
-                stepsCounter++;
-            }
-            if (m_Direction.normalized.z == -1)
-            {
-                stepsCounter--;
+                LeanTween.move(terrain, terrain.transform.position + new Vector3(0, 0, -t_Direction.normalized.z), animationDuration).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
+                {
+                    if (t_Direction.z >= -3)
+                    {
+                        steps += 1;
+                    }
+                });
             }
         }
     }
 
-    public void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        if (counter == 2 && isRecycled == true)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            counter = 0;
-            isRecycled = false;
+            playerBehaviour.canJump = true;
         }
     }
 
-    public void OnTriggerEnter(Collider other)
+    private void UpdateTextSteps()
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            canMove = false;
-        }
+        textSteps.text = "Score: " + steps.ToString() + "/" + "Record: " + record.ToString();
     }
 }
