@@ -56,36 +56,35 @@ public class LevelBehaviour : MonoBehaviour
         swipeController.OnSwipe -= MoveTarget;
     }
 
-    public void MoveTarget(Vector3 t_Direction)
+    public void MoveTarget(Vector3 direction)
     {
-        if (Mathf.Abs(t_Direction.x) > Mathf.Abs(t_Direction.z))
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.z))
         {
             return;
         }
 
-        RaycastHit t_HitInfo = PlayerBehaviour.rayCast;
+        RaycastHit hitInfo = PlayerBehaviour.rayCast;
 
         if (playerBehaviour.canJump)
         {
-            if (Physics.Raycast(player.transform.position + new Vector3(0, 1f, 0), t_Direction, out t_HitInfo, 1f))
+            if (Physics.Raycast(player.transform.position + new Vector3(0, 1f, 0), direction, out hitInfo, 1f))
             {
-                Debug.Log("Hit Something, Restricting Movement");
-                if (t_HitInfo.collider.tag != "ProceduralTerrain")
+                if (hitInfo.collider.tag != "ProceduralTerrain")
                 {
-                    if (t_Direction.z != 0)
+                    if (direction.z != 0)
                     {
-                        t_Direction.z = 0;
+                        direction.z = 0;
                     }
                 }
 
-                Debug.DrawRay(transform.position + new Vector3(0, 1f, 0), transform.forward * t_HitInfo.distance, Color.red);
+                Debug.DrawRay(transform.position + new Vector3(0, 1f, 0), transform.forward * hitInfo.distance, Color.red);
             }
 
-            if (t_Direction != Vector3.zero)
+            if (direction != Vector3.zero)
             {
-                LeanTween.move(terrain, terrain.transform.position + new Vector3(0, 0, -t_Direction.normalized.z), animationDuration).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
+                LeanTween.move(terrain, terrain.transform.position + new Vector3(0, 0, -direction.normalized.z), animationDuration).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
                 {
-                    if (t_Direction.z >= -3)
+                    if (direction.z >= -3)
                     {
                         steps += 1;
                     }
@@ -104,6 +103,6 @@ public class LevelBehaviour : MonoBehaviour
 
     private void UpdateTextSteps()
     {
-        textSteps.text = "Score: " + steps.ToString() + "/" + "Record: " + record.ToString();
+        textSteps.text = "Score: " + steps.ToString() + "\nRecord: " + record.ToString();
     }
 }

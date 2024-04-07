@@ -12,6 +12,9 @@ public class PlayerBehaviour : MonoBehaviour
     public bool canJump;
 
     public static RaycastHit rayCast;
+
+    public CoinBehaviour coinBehaviour;
+
     private void Awake()
     {
         player = this.gameObject;
@@ -21,7 +24,6 @@ public class PlayerBehaviour : MonoBehaviour
     public void Start()
     {
         SwipeController.instance.OnSwipe += MoveTarget;
-
     }
 
     public void OnDestroy()
@@ -76,6 +78,14 @@ public class PlayerBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Terrain") || collision.gameObject.CompareTag("ProceduralTerrain"))
         {
             canJump = true; 
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            coinBehaviour.coinAmount += 1;
+            other.gameObject.SetActive(false);
         }
     }
 }

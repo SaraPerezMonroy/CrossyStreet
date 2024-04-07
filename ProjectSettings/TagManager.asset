@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Terrain
   - ProceduralTerrain
+  - Coin
   layers:
   - Default
   - TransparentFX
