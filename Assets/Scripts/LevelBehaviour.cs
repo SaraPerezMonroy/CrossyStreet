@@ -19,6 +19,9 @@ public class LevelBehaviour : MonoBehaviour
     public int steps = 0;
     [SerializeField] 
     TextMeshProUGUI textSteps;
+    public int backSteps;
+
+    public bool canMove = true;
 
     public void Awake()
     {
@@ -56,18 +59,12 @@ public class LevelBehaviour : MonoBehaviour
         swipeController.OnSwipe -= MoveTarget;
     }
 
-    public void MoveTarget(Vector3 direction)
+    void MoveTarget(Vector3 direction)
     {
-        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.z))
-        {
-            return;
-        }
-
         RaycastHit hitInfo = PlayerBehaviour.rayCast;
-
-        if (playerBehaviour.canJump)
+        if (playerBehaviour != null && playerBehaviour.canJump && canMove)
         {
-            if (Physics.Raycast(player.transform.position + new Vector3(0, 1f, 0), direction, out hitInfo, 1f))
+            if (Physics.Raycast(playerBehaviour.transform.position + new Vector3(0, 1f, 0), direction, out hitInfo, 1f))
             {
                 if (hitInfo.collider.tag != "ProceduralTerrain")
                 {
@@ -76,19 +73,14 @@ public class LevelBehaviour : MonoBehaviour
                         direction.z = 0;
                     }
                 }
-
-                Debug.DrawRay(transform.position + new Vector3(0, 1f, 0), transform.forward * hitInfo.distance, Color.red);
             }
-
-            if (direction != Vector3.zero)
+            if (direction.normalized.z >= 0 && playerBehaviour.backSteps == 0)
             {
-                LeanTween.move(terrain, terrain.transform.position + new Vector3(0, 0, -direction.normalized.z), animationDuration).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
-                {
-                    if (direction.z >= -3)
-                    {
-                        steps += 1;
-                    }
-                });
+                LeanTween.move(terrain, terrain.transform.position + new Vector3(0, 0, -direction.normalized.z), animationDuration).setEase(LeanTweenType.easeOutQuad);
+            }            
+            if (playerBehaviour.backSteps == 0 && direction.z >= 0 && Mathf.Abs(direction.x) < Mathf.Abs(direction.z))
+            {
+                steps++;
             }
         }
     }

@@ -14,12 +14,12 @@ public class PlayerBehaviour : MonoBehaviour
     public static RaycastHit rayCast;
 
     public CoinBehaviour coinBehaviour;
+    public int backSteps;
 
     private void Awake()
     {
         player = this.gameObject;
     }
-
 
     public void Start()
     {
@@ -69,7 +69,23 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 LeanTween.move(player, player.transform.position + (new Vector3(direction.x, 0, 0) - Vector3.up) / 2, timeAnim / 2);
             });
-            canJump = false;
+                if (backSteps < 3 && direction.normalized.z <= 0)
+                {
+                    backSteps++;
+                    LeanTween.move(player, player.transform.position + new Vector3(direction.x / 2, 0, direction.z / 2) + Vector3.up / 2, timeAnim / 2).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
+                    {
+                        LeanTween.move(player, player.transform.position + new Vector3(direction.x / 2, 0, direction.z / 2) - Vector3.up / 2, timeAnim / 2).setEase(LeanTweenType.easeOutQuad);
+                    });
+                }
+                if (backSteps != 0 && direction.normalized.z >= 0)
+                {
+                    backSteps--;
+                    LeanTween.move(player, player.transform.position + new Vector3(direction.x / 2, 0, direction.z / 2) + Vector3.up / 2, timeAnim / 2).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
+                    {
+                        LeanTween.move(player, player.transform.position + new Vector3(direction.x / 2, 0, direction.z / 2) - Vector3.up / 2, timeAnim / 2).setEase(LeanTweenType.easeOutQuad);
+                    });
+                }
+                canJump = false;
             }
         }
     }
@@ -86,6 +102,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             coinBehaviour.coinAmount += 1;
             other.gameObject.SetActive(false);
+            coinBehaviour.DisplayText();
         }
     }
 }
