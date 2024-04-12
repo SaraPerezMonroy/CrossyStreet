@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CoinBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI textCoin;
+    public TextMeshProUGUI textCoin;
     public int coinAmount = 0;
 
     [SerializeField]
@@ -36,7 +36,7 @@ public class CoinBehaviour : MonoBehaviour
 
     public void DisplayText()
     {
-        LeanTween.cancel(coinCanvasGroup.gameObject);
+        LeanTween.cancel(coinCanvasGroup.gameObject); // Para que no se repita la animación si se está haciendo ya 
         LeanTween.alphaCanvas(coinCanvasGroup, 1f, fadeDuration / 2).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
             {
                 LeanTween.alphaCanvas(coinCanvasGroup, 0f, fadeDuration / 2).setEase(LeanTweenType.easeInOutQuad).setDelay(displayDuration).setOnComplete(() =>

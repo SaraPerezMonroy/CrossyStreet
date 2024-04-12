@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class PlayerBehaviour : MonoBehaviour
 {
     public SwipeController swipeEvent;
+    [SerializeField]
     public GameObject player;
     public float timeAnim = 0.4f;
 
@@ -15,6 +19,23 @@ public class PlayerBehaviour : MonoBehaviour
 
     public CoinBehaviour coinBehaviour;
     public int backSteps;
+
+    [SerializeField]
+    public GameObject gameEndingScreen;
+    [SerializeField]
+    public GameObject gameUI;
+    [SerializeField]
+    public TextMeshProUGUI textEnding;
+    [SerializeField]
+    public TextMeshProUGUI newRecordLabel;
+
+    public LevelBehaviour levelBehaviour;
+    public SwipeController swipeController;
+
+    public SkinnedMeshRenderer meshPlayer;
+    [SerializeField]
+    public CapsuleCollider colliderPlayer;
+    public Rigidbody rb;
 
     private void Awake()
     {
@@ -104,5 +125,26 @@ public class PlayerBehaviour : MonoBehaviour
             other.gameObject.SetActive(false);
             coinBehaviour.DisplayText();
         }
+        if(other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Obstacle"))
+        {
+            rb.isKinematic = true;
+            canJump = false;
+            meshPlayer.enabled = false;
+            colliderPlayer.enabled = false;
+            swipeController.enabled = false;
+
+            gameEndingScreen.SetActive(true);
+            textEnding.text = "Total coins: " + coinBehaviour.coinAmount + "\nTotal steps: " + levelBehaviour.steps;
+            gameUI.SetActive(false);
+            if (levelBehaviour.newRecord)
+            {
+                newRecordLabel.text = "Nuevo record!";
+            }
+            else
+            {
+                newRecordLabel.text = "Record: " + levelBehaviour.record;
+            }
+        }
     }
+
 }

@@ -15,29 +15,33 @@ public class LevelBehaviour : MonoBehaviour
     [SerializeField] 
     GameObject player;
 
-    private int record = 0;
+    public int record = 0;
     public int steps = 0;
+
     [SerializeField] 
-    TextMeshProUGUI textSteps;
+    public TextMeshProUGUI textSteps;
     public int backSteps;
 
     public bool canMove = true;
+    public bool newRecord = false;
 
     public void Awake()
     {
         terrain = this.gameObject;
+        steps = 0;
     }
 
     public void Start()
     {
-        steps = PlayerPrefs.GetInt("Steps: ", 0);
-        record = PlayerPrefs.GetInt("Record: ", 0);
+        steps = PlayerPrefs.GetInt("Score", 0);
+        record = PlayerPrefs.GetInt("Record", 0);
+
         UpdateTextSteps();
     }
 
     public void Update()
     {
-        PlayerPrefs.SetInt("Steps", steps);
+        PlayerPrefs.GetInt("Steps", steps);
         PlayerPrefs.Save();
 
         if (steps > record)
@@ -45,7 +49,9 @@ public class LevelBehaviour : MonoBehaviour
             record = steps;
             PlayerPrefs.SetInt("Record", record);
             PlayerPrefs.Save();
+            newRecord = true;
         }
+
         UpdateTextSteps();
     }
 
@@ -95,6 +101,6 @@ public class LevelBehaviour : MonoBehaviour
 
     private void UpdateTextSteps()
     {
-        textSteps.text = "Score: " + steps.ToString() + "\nRecord: " + record.ToString();
+        textSteps.text = "Score: " + steps + "\nRecord: " + record;
     }
 }
