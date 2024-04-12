@@ -138,7 +138,7 @@ public class PlayerBehaviour : MonoBehaviour
             gameUI.SetActive(false);
             if (levelBehaviour.newRecord)
             {
-                newRecordLabel.text = "Nuevo record!";
+                newRecordLabel.text = "New record!";
             }
             else
             {
