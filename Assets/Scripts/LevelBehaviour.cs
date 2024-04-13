@@ -3,27 +3,23 @@ using UnityEngine;
 
 public class LevelBehaviour : MonoBehaviour
 {
-    public SwipeController swipeController;
     public LevelGenerator levelGenerator;
     public PlayerBehaviour playerBehaviour;
 
     public float offset = 100f;
     public float animationDuration = 0.25f;
 
-    [SerializeField]
+
     GameObject terrain;
     [SerializeField] 
     GameObject player;
 
-    public int record = 0;
     public int steps = 0;
 
-    [SerializeField] 
-    public TextMeshProUGUI textSteps;
+
     public int backSteps;
 
     public bool canMove = true;
-    public bool newRecord = false;
 
     public void Awake()
     {
@@ -33,38 +29,21 @@ public class LevelBehaviour : MonoBehaviour
 
     public void Start()
     {
-        steps = PlayerPrefs.GetInt("Score", 0);
-        record = PlayerPrefs.GetInt("Record", 0);
+     
+        SwipeController.instance.OnSwipe += MoveTarget;
 
-        UpdateTextSteps();
     }
 
     public void Update()
     {
-        PlayerPrefs.GetInt("Steps", steps);
-        PlayerPrefs.Save();
-
-        if (steps > record)
-        {
-            record = steps;
-            PlayerPrefs.SetInt("Record", record);
-            PlayerPrefs.Save();
-            newRecord = true;
-        }
-
-        UpdateTextSteps();
+       
     }
 
-    public void OnEnable()
-    {
-        swipeController.OnSwipe += MoveTarget;
-    }
 
     public void OnDisable()
     {
-        swipeController.OnSwipe -= MoveTarget;
+        SwipeController.instance.OnSwipe -= MoveTarget;
     }
-
     void MoveTarget(Vector3 direction)
     {
         RaycastHit hitInfo = PlayerBehaviour.rayCast;
@@ -87,6 +66,7 @@ public class LevelBehaviour : MonoBehaviour
             if (playerBehaviour.backSteps == 0 && direction.z >= 0 && Mathf.Abs(direction.x) < Mathf.Abs(direction.z))
             {
                 steps++;
+                UI.instance.UpdateTextSteps(steps);
             }
         }
     }
@@ -99,8 +79,5 @@ public class LevelBehaviour : MonoBehaviour
         }
     }
 
-    private void UpdateTextSteps()
-    {
-        textSteps.text = "Score: " + steps;
-    }
+
 }

@@ -17,26 +17,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     public static RaycastHit rayCast;
 
-    public CoinBehaviour coinBehaviour;
     public int backSteps;
 
-    [SerializeField]
-    public GameObject gameEndingScreen;
-    [SerializeField]
-    public GameObject gameUI;
-    [SerializeField]
-    public TextMeshProUGUI textEnding;
-    [SerializeField]
-    public TextMeshProUGUI newRecordLabel;
 
-    public LevelBehaviour levelBehaviour;
-    public SwipeController swipeController;
-
-    public SkinnedMeshRenderer meshPlayer;
-    [SerializeField]
-    public CapsuleCollider colliderPlayer;
-    public Rigidbody rb;
-    public GameObject crownImage;
 
     private void Awake()
     {
@@ -122,30 +105,15 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Coin"))
         {
-            coinBehaviour.coinAmount += 1;
+            UI.instance.coinAmount += 1;
             other.gameObject.SetActive(false);
-            coinBehaviour.DisplayText();
+            UI.instance.DisplayText();
         }
         if(other.gameObject.CompareTag("Enemy"))
         {
-            rb.isKinematic = true;
-            canJump = false;
-            meshPlayer.enabled = false;
-            colliderPlayer.enabled = false;
-            swipeController.enabled = false;
-
-            gameEndingScreen.SetActive(true);
-            textEnding.text = "Total coins: " + coinBehaviour.coinAmount + "\nTotal steps: " + levelBehaviour.steps;
-            gameUI.SetActive(false);
-            if (levelBehaviour.newRecord)
-            {
-                newRecordLabel.text = "New record!";
-                crownImage.SetActive(true);
-            }
-            else
-            {
-                newRecordLabel.text = "Record: " + levelBehaviour.record;
-            }
+            UI.instance.GameEnding();
+            this.gameObject.SetActive(false);
+            SwipeController.instance.enabled = false;
         }
     }
 
