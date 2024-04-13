@@ -101,6 +101,6 @@ public class LevelBehaviour : MonoBehaviour
 
     private void UpdateTextSteps()
     {
-        textSteps.text = "Score: " + steps + "\nRecord: " + record;
+        textSteps.text = "Score: " + steps;
     }
 }

@@ -36,6 +36,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField]
     public CapsuleCollider colliderPlayer;
     public Rigidbody rb;
+    public GameObject crownImage;
 
     private void Awake()
     {
@@ -139,6 +140,7 @@ public class PlayerBehaviour : MonoBehaviour
             if (levelBehaviour.newRecord)
             {
                 newRecordLabel.text = "New record!";
+                crownImage.SetActive(true);
             }
             else
             {
