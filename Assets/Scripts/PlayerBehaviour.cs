@@ -125,7 +125,7 @@ public class PlayerBehaviour : MonoBehaviour
             other.gameObject.SetActive(false);
             coinBehaviour.DisplayText();
         }
-        if(other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Obstacle"))
+        if(other.gameObject.CompareTag("Enemy"))
         {
             rb.isKinematic = true;
             canJump = false;

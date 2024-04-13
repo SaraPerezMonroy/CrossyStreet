@@ -7,7 +7,6 @@ TagManager:
   - Terrain
   - ProceduralTerrain
   - Coin
-  - Obstacle
   - Enemy
   layers:
   - Default
