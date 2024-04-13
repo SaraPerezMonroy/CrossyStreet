@@ -8,5 +8,9 @@ public class Button : MonoBehaviour
     public void RestartScene()
     {
         SceneManager.LoadScene(0);
+    }    
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

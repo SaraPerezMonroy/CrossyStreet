@@ -7,12 +7,10 @@ public class PropDespawner : MonoBehaviour
     public PropSpawner propSpawner;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Prop"))
+        if (other.CompareTag("Prop"))  // Añade el prop que entra en el otro collider a la lista de los prefabs que spawnearían
         {
-            // Si el objeto que entra en el otro collider es un "prop", añadirlo a la lista de prefabs a spawnear
             propSpawner.inactiveProps.Add(other.gameObject);
             other.gameObject.SetActive(false);
         }
     }
-
 }

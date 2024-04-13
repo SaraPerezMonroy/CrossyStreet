@@ -17,37 +17,26 @@ public class PropSpawner : MonoBehaviour
             obj.SetActive(false);
             inactiveProps.Add(obj);
         }
-
-        // Spawnear el primer objeto
-        SpawnRandomObject();
+        SpawnRandomProp();
     }
 
-    void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other) // El spawner funciona si el objeto activo sale del trigger
     {
-        // Cuando el objeto activo sale del trigger, spawnear otro objeto
-        if (other.gameObject == activeObject)
+        if (other.gameObject == activeObject) 
         {
-            SpawnRandomObject();
+            SpawnRandomProp();
         }
     }
 
-    void SpawnRandomObject()
+    void SpawnRandomProp()
     {
-        // Si hay objetos inactivos disponibles
         if (inactiveProps.Count > 0)
         {
-            // Obtener un índice aleatorio
-            int randomIndex = Random.Range(0, inactiveProps.Count);
-
-            // Activar un objeto inactivo aleatorio
-            activeObject = inactiveProps[randomIndex];
+            int randomIndex = Random.Range(0, inactiveProps.Count); // Índice aleatorio de la lista
+            activeObject = inactiveProps[randomIndex]; 
             activeObject.SetActive(true);
-
-            // Establecer la posición del objeto spawn
-            activeObject.transform.position = spawn.transform.position;
-
-            // Remover el objeto activado de la lista de objetos inactivos
-            inactiveProps.RemoveAt(randomIndex);
+            activeObject.transform.position = spawn.transform.position; // Establecer la posición del spawn
+            inactiveProps.RemoveAt(randomIndex); // Quita el prop activado de la lista de inactivo
         }
     }
 }

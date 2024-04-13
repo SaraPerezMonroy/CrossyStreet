@@ -96,7 +96,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Terrain") || collision.gameObject.CompareTag("ProceduralTerrain"))
+        if (collision.gameObject.CompareTag("Terrain") || collision.gameObject.CompareTag("ProceduralTerrain") || collision.gameObject.CompareTag("Plataform"))
         {
             canJump = true; 
         }
@@ -115,6 +115,12 @@ public class PlayerBehaviour : MonoBehaviour
             this.gameObject.SetActive(false);
             SwipeController.instance.enabled = false;
         }
+        if (other.gameObject.CompareTag("Plataform"))
+        {
+            Vector3 plataformaPosition = other.gameObject.transform.position;
+            transform.position += plataformaPosition - transform.position;
+        }
+
     }
 
 }

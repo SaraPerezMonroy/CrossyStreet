@@ -8,6 +8,8 @@ TagManager:
   - ProceduralTerrain
   - Coin
   - Enemy
+  - Prop
+  - Plataform
   layers:
   - Default
   - TransparentFX
