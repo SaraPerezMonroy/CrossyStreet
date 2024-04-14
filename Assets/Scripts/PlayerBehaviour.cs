@@ -18,8 +18,11 @@ public class PlayerBehaviour : MonoBehaviour
     public static RaycastHit rayCast;
 
     public int backSteps;
+    public LevelBehaviour levelBehaviour;
 
+    private Transform platformTransform;
 
+    public AudioSource coinSound;
 
     private void Awake()
     {
@@ -96,10 +99,16 @@ public class PlayerBehaviour : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Terrain") || collision.gameObject.CompareTag("ProceduralTerrain") || collision.gameObject.CompareTag("Plataform"))
+        if (collision.gameObject.CompareTag("Terrain") || collision.gameObject.CompareTag("ProceduralTerrain") || collision.gameObject.CompareTag("Platform"))
         {
             canJump = true; 
         }
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            platformTransform = collision.transform;
+            transform.SetParent(platformTransform); // Convertir al jugador en hijo de la plataforma
+        }
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -108,6 +117,7 @@ public class PlayerBehaviour : MonoBehaviour
             UI.instance.coinAmount += 1;
             other.gameObject.SetActive(false);
             UI.instance.DisplayText();
+            coinSound.Play();
         }
         if(other.gameObject.CompareTag("Enemy"))
         {
@@ -115,12 +125,17 @@ public class PlayerBehaviour : MonoBehaviour
             this.gameObject.SetActive(false);
             SwipeController.instance.enabled = false;
         }
-        if (other.gameObject.CompareTag("Plataform"))
-        {
-            Vector3 plataformaPosition = other.gameObject.transform.position;
-            transform.position += plataformaPosition - transform.position;
-        }
+       
 
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            platformTransform = null;
+            transform.SetParent(null); // Convertir al jugador en hijo del mundo (no tener ningún padre)
+        }
     }
 
 }

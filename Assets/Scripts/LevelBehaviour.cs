@@ -29,9 +29,7 @@ public class LevelBehaviour : MonoBehaviour
 
     public void Start()
     {
-     
         SwipeController.instance.OnSwipe += MoveTarget;
-
     }
 
     public void Update()
@@ -44,7 +42,7 @@ public class LevelBehaviour : MonoBehaviour
     {
         SwipeController.instance.OnSwipe -= MoveTarget;
     }
-    void MoveTarget(Vector3 direction)
+    public void MoveTarget(Vector3 direction)
     {
         RaycastHit hitInfo = PlayerBehaviour.rayCast;
         if (playerBehaviour != null && playerBehaviour.canJump && canMove)

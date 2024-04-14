@@ -9,7 +9,7 @@ TagManager:
   - Coin
   - Enemy
   - Prop
-  - Plataform
+  - Platform
   layers:
   - Default
   - TransparentFX
