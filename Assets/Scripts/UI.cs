@@ -19,6 +19,8 @@ public class UI : MonoBehaviour
     public float displayDuration = 2f;
 
     public LevelBehaviour levelBehaviour;
+    [SerializeField]
+    public PlayerBehaviour playerBehaviour;
 
     [SerializeField]
     public GameObject gameEndingScreen;
@@ -51,7 +53,7 @@ public class UI : MonoBehaviour
 
     private void Start()
     {
-        levelBehaviour.steps = PlayerPrefs.GetInt("Score", 0);
+        playerBehaviour.steps = PlayerPrefs.GetInt("Score", 0);
         record = PlayerPrefs.GetInt("Record", 0);
         coinAmount = PlayerPrefs.GetInt("Coin", 0);
         UpdateCoinText();
@@ -62,12 +64,12 @@ public class UI : MonoBehaviour
         PlayerPrefs.SetInt("Coins", coinAmount);
         PlayerPrefs.Save();
         UpdateCoinText();
-        PlayerPrefs.GetInt("Steps", levelBehaviour.steps);
+        PlayerPrefs.GetInt("Steps", playerBehaviour.steps);
         PlayerPrefs.Save();
 
-        if (levelBehaviour.steps > record)
+        if (playerBehaviour.steps > record)
         {
-            record = levelBehaviour.steps;
+            record = playerBehaviour.steps;
             PlayerPrefs.SetInt("Record", record);
             PlayerPrefs.Save();
             newRecord = true;
@@ -98,7 +100,7 @@ public class UI : MonoBehaviour
     public void GameEnding()
     {
         gameEndingScreen.SetActive(true);
-        textEnding.text = "Total coins: " + coinAmount + "\nTotal steps: " + levelBehaviour.steps;
+        textEnding.text = "Total coins: " + coinAmount + "\nTotal steps: " + playerBehaviour.steps;
         gameUI.SetActive(false);
         if (newRecord)
         {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -9,11 +10,15 @@ using UnityEngine.UIElements;
 public class PlayerBehaviour : MonoBehaviour
 {
     public SwipeController swipeEvent;
+    public static PlayerBehaviour instance;
+
     [SerializeField]
     public GameObject player;
     public float timeAnim = 0.4f;
 
     public bool canJump;
+    public bool moveLevel;
+    public bool playerIsDead = false;
 
     public static RaycastHit rayCast;
 
@@ -23,13 +28,24 @@ public class PlayerBehaviour : MonoBehaviour
     private Transform platformTransform;
 
     public AudioSource coinSound;
+    public int steps = 0;
 
     private void Awake()
     {
         player = this.gameObject;
+        steps = 0;
+        if (PlayerBehaviour.instance == null)
+        {
+            PlayerBehaviour.instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+
     }
 
-    public void Start()
+        public void Start()
     {
         SwipeController.instance.OnSwipe += MoveTarget;
     }
@@ -77,21 +93,35 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 LeanTween.move(player, player.transform.position + (new Vector3(direction.x, 0, 0) - Vector3.up) / 2, timeAnim / 2);
             });
-                if (backSteps < 3 && direction.normalized.z <= 0)
+                /*  if (backSteps < 3 && direction.normalized.z <= 0)
+                  {
+                      backSteps++;
+                      LeanTween.move(player, player.transform.position + new Vector3(direction.x / 2, 0, direction.z / 2) + Vector3.up / 2, timeAnim / 2).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
+                      {
+                          LeanTween.move(player, player.transform.position + new Vector3(direction.x / 2, 0, direction.z / 2) - Vector3.up / 2, timeAnim / 2).setEase(LeanTweenType.easeOutQuad);
+                      });
+                  }
+                  if (backSteps != 0 && direction.normalized.z >= 0)
+                  {
+                      backSteps--;
+                      LeanTween.move(player, player.transform.position + new Vector3(direction.x / 2, 0, direction.z / 2) + Vector3.up / 2, timeAnim / 2).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
+                      {
+                          LeanTween.move(player, player.transform.position + new Vector3(direction.x / 2, 0, direction.z / 2) - Vector3.up / 2, timeAnim / 2).setEase(LeanTweenType.easeOutQuad);
+                      });
+                  }*/
+                if (direction.normalized.z < 0 && backSteps < 3)  //abajo y que se sumen los stepsback
                 {
                     backSteps++;
-                    LeanTween.move(player, player.transform.position + new Vector3(direction.x / 2, 0, direction.z / 2) + Vector3.up / 2, timeAnim / 2).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
-                    {
-                        LeanTween.move(player, player.transform.position + new Vector3(direction.x / 2, 0, direction.z / 2) - Vector3.up / 2, timeAnim / 2).setEase(LeanTweenType.easeOutQuad);
-                    });
                 }
-                if (backSteps != 0 && direction.normalized.z >= 0)
+
+                if (direction.normalized.z > 0 && backSteps == 0 && levelBehaviour.stopAddingSteps == false) //arriba y que sume si los steps back son cero 
+                {
+                    steps++;
+                    UI.instance.UpdateTextSteps(steps);
+                }
+                if (direction.normalized.z > 0 && backSteps > 0)
                 {
                     backSteps--;
-                    LeanTween.move(player, player.transform.position + new Vector3(direction.x / 2, 0, direction.z / 2) + Vector3.up / 2, timeAnim / 2).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
-                    {
-                        LeanTween.move(player, player.transform.position + new Vector3(direction.x / 2, 0, direction.z / 2) - Vector3.up / 2, timeAnim / 2).setEase(LeanTweenType.easeOutQuad);
-                    });
                 }
                 canJump = false;
             }
@@ -101,7 +131,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Terrain") || collision.gameObject.CompareTag("ProceduralTerrain") || collision.gameObject.CompareTag("Platform"))
         {
-            canJump = true; 
+            canJump = true;
+            moveLevel = true;
         }
         if (collision.gameObject.CompareTag("Platform"))
         {
@@ -124,9 +155,8 @@ public class PlayerBehaviour : MonoBehaviour
             UI.instance.GameEnding();
             this.gameObject.SetActive(false);
             SwipeController.instance.enabled = false;
+            playerIsDead = true;
         }
-       
-
     }
 
     private void OnCollisionExit(Collision collision)
@@ -134,7 +164,8 @@ public class PlayerBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Platform"))
         {
             platformTransform = null;
-            transform.SetParent(null); // Convertir al jugador en hijo del mundo (no tener ningún padre)
+            transform.SetParent(null); // Convertir al jugador en hijo del mundo 
+            moveLevel = false;
         }
     }
 

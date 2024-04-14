@@ -9,6 +9,7 @@ public class SwipeController : MonoBehaviour
 
     Vector3 clickInicial;
     Vector3 alSoltarClick;
+    Vector3 click;
 
     [SerializeField]
     public float offset = 100f; // Para poder moverse de verdad tiene que ser mayor a 100, por si se hace clic sin querer
@@ -36,6 +37,7 @@ public class SwipeController : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             clickInicial = Input.mousePosition;
+            click = Vector3.forward;
         }
 
         if(Input.GetMouseButtonUp(0))
@@ -63,6 +65,15 @@ public class SwipeController : MonoBehaviour
                     OnSwipe(diferencia);
                 }
             }
+               
+            else
+            {
+              Vector3 clickVect = click;
+              if (OnSwipe != null)
+              {
+                   OnSwipe(clickVect);
+              }
+                }
+            }
         }
-    }
-}
+ }

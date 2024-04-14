@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class LevelBehaviour : MonoBehaviour
 {
@@ -8,13 +9,13 @@ public class LevelBehaviour : MonoBehaviour
 
     public float offset = 100f;
     public float animationDuration = 0.25f;
+    public bool stopAddingSteps = false;
 
 
     GameObject terrain;
     [SerializeField] 
     GameObject player;
 
-    public int steps = 0;
 
 
     public int backSteps;
@@ -24,17 +25,11 @@ public class LevelBehaviour : MonoBehaviour
     public void Awake()
     {
         terrain = this.gameObject;
-        steps = 0;
     }
 
     public void Start()
     {
         SwipeController.instance.OnSwipe += MoveTarget;
-    }
-
-    public void Update()
-    {
-       
     }
 
 
@@ -56,15 +51,23 @@ public class LevelBehaviour : MonoBehaviour
                         direction.z = 0;
                     }
                 }
+                if (hitInfo.collider.tag == "Obstacle")
+                {
+                    stopAddingSteps = true;
+                }
             }
-            if (direction.normalized.z >= 0 && playerBehaviour.backSteps == 0)
+            else
+            {
+                stopAddingSteps=false;
+            }
+        
+           if(direction.z < 0 && playerBehaviour.backSteps < 3)
             {
                 LeanTween.move(terrain, terrain.transform.position + new Vector3(0, 0, -direction.normalized.z), animationDuration).setEase(LeanTweenType.easeOutQuad);
-            }            
-            if (playerBehaviour.backSteps == 0 && direction.z >= 0 && Mathf.Abs(direction.x) < Mathf.Abs(direction.z))
+            }
+            if (direction.z > 0)
             {
-                steps++;
-                UI.instance.UpdateTextSteps(steps);
+                LeanTween.move(terrain, terrain.transform.position + new Vector3(0, 0, -direction.normalized.z), animationDuration).setEase(LeanTweenType.easeOutQuad);
             }
         }
     }
@@ -76,6 +79,12 @@ public class LevelBehaviour : MonoBehaviour
             playerBehaviour.canJump = true;
         }
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            canMove = false;
+        }
+    }
 
 }
