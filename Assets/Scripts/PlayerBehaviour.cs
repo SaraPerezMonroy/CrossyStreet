@@ -17,7 +17,6 @@ public class PlayerBehaviour : MonoBehaviour
     public float timeAnim = 0.4f;
 
     public bool canJump;
-    public bool moveLevel;
     public bool playerIsDead = false;
 
     public static RaycastHit rayCast;
@@ -93,22 +92,7 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 LeanTween.move(player, player.transform.position + (new Vector3(direction.x, 0, 0) - Vector3.up) / 2, timeAnim / 2);
             });
-                /*  if (backSteps < 3 && direction.normalized.z <= 0)
-                  {
-                      backSteps++;
-                      LeanTween.move(player, player.transform.position + new Vector3(direction.x / 2, 0, direction.z / 2) + Vector3.up / 2, timeAnim / 2).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
-                      {
-                          LeanTween.move(player, player.transform.position + new Vector3(direction.x / 2, 0, direction.z / 2) - Vector3.up / 2, timeAnim / 2).setEase(LeanTweenType.easeOutQuad);
-                      });
-                  }
-                  if (backSteps != 0 && direction.normalized.z >= 0)
-                  {
-                      backSteps--;
-                      LeanTween.move(player, player.transform.position + new Vector3(direction.x / 2, 0, direction.z / 2) + Vector3.up / 2, timeAnim / 2).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
-                      {
-                          LeanTween.move(player, player.transform.position + new Vector3(direction.x / 2, 0, direction.z / 2) - Vector3.up / 2, timeAnim / 2).setEase(LeanTweenType.easeOutQuad);
-                      });
-                  }*/
+
                 if (direction.normalized.z < 0 && backSteps < 3)  //abajo y que se sumen los stepsback
                 {
                     backSteps++;
@@ -132,7 +116,6 @@ public class PlayerBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Terrain") || collision.gameObject.CompareTag("ProceduralTerrain") || collision.gameObject.CompareTag("Platform"))
         {
             canJump = true;
-            moveLevel = true;
         }
         if (collision.gameObject.CompareTag("Platform"))
         {
@@ -165,8 +148,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             platformTransform = null;
             transform.SetParent(null); // Convertir al jugador en hijo del mundo 
-            moveLevel = false;
+            canJump = false;
         }
     }
-
 }

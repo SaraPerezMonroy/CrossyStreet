@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PropBehaviour : MonoBehaviour
 {
-    public Transform[] waypoints;
-    [SerializeField]
-    public float propSpeed;
 
-    void Update()
+    public Transform[] waypoints;
+    public float propSpeed = 5f;
+
+
+    void FixedUpdate()
     {
         if (transform.position != waypoints[0].position)
         {
@@ -17,6 +18,20 @@ public class PropBehaviour : MonoBehaviour
         else
         {
             transform.position = waypoints[1].position;
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(this.transform);
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(null);
         }
     }
 }

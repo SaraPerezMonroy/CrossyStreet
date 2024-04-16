@@ -1,13 +1,13 @@
-using TMPro;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class LevelBehaviour : MonoBehaviour
+public class PropMovement : MonoBehaviour
 {
     public float animationDuration = 0.25f;
     public bool stopAddingSteps = false;
 
-    GameObject terrain;
+    public GameObject terrain;
     public int backSteps;
     public bool canMove = true;
 
@@ -20,7 +20,6 @@ public class LevelBehaviour : MonoBehaviour
     {
         SwipeController.instance.OnSwipe += MoveTarget;
     }
-
 
     public void OnDisable()
     {
@@ -47,10 +46,10 @@ public class LevelBehaviour : MonoBehaviour
             }
             else
             {
-                stopAddingSteps=false;
+                stopAddingSteps = false;
             }
-        
-           if(direction.z < 0 && PlayerBehaviour.instance.backSteps < 3)
+
+            if (direction.z < 0 && PlayerBehaviour.instance.backSteps < 3)
             {
                 LeanTween.move(terrain, terrain.transform.position + new Vector3(0, 0, -direction.normalized.z), animationDuration).setEase(LeanTweenType.easeOutQuad);
             }

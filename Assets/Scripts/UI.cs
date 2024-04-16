@@ -94,6 +94,7 @@ public class UI : MonoBehaviour
     }
     public void UpdateTextSteps(int steps)
     {
+        playerBehaviour.steps = steps;
         textSteps.text = "Score: " + steps;
     }
 

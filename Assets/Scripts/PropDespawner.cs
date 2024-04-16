@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class PropDespawner : MonoBehaviour
 {
-    public PropSpawner propSpawner;
+    public PropSpawner rp_SpawnProps;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Prop"))  // Añade el prop que entra en el otro collider a la lista de los prefabs que spawnearían
+        if (other.CompareTag("Prop"))
         {
-            propSpawner.inactiveProps.Add(other.gameObject);
+            // Si el objeto que entra en el otro collider es un "prop", añadirlo a la lista de prefabs a spawnear
+            rp_SpawnProps.inactiveObjects.Add(other.gameObject);
             other.gameObject.SetActive(false);
+            other.gameObject.transform.parent = null;
         }
     }
 }
