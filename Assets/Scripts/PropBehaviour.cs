@@ -24,9 +24,14 @@ public class PropBehaviour : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            float centerZ = transform.position.z;
+            Vector3 playerPosition = collision.transform.position;
+            playerPosition.z = centerZ; // Calcular el centro del tronco en el eje z y establecerlo para el jugador
+            collision.transform.position = playerPosition;
             collision.transform.SetParent(this.transform);
         }
     }
+
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))

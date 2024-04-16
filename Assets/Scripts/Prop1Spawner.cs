@@ -11,7 +11,9 @@ public class Prop1Spawner : MonoBehaviour
     [SerializeField] GameObject spawnPoint;
     [SerializeField] GameObject propParent;
 
-    private int propsActivated = 0; // Variable para llevar el conteo de props activadas
+    private int propsActivated = 0;
+
+    [SerializeField] GameObject middleSpawnProp;
 
     private void Start()
     {
@@ -34,31 +36,30 @@ public class Prop1Spawner : MonoBehaviour
 
     public void SpawnRandomPrefab()
     {
-        if (inactiveObjects.Count > 0)
+        if (propsActivated <7 && propsActivated>5)
         {
-            int randomIndex = Random.Range(0, inactiveObjects.Count);
-
-            activeObject = inactiveObjects[randomIndex];
-            activeObject.SetActive(true);
-
-            activeObject.transform.position = spawnPoint.transform.position;
-
-            inactiveObjects.RemoveAt(randomIndex);
-
-            activeObject.transform.parent = propParent.transform;
-
-            propsActivated++;
-
-            if (propsActivated >= 6) 
-            {
-                // Desactivar este script
-                this.enabled = false;
-                PropSpawner propSpawner = GetComponent<PropSpawner>();
-                if (propSpawner != null)
-                {
-                    propSpawner.enabled = true; // Activar el otro script
-                }
-            }
+            this.enabled = false;
+            middleSpawnProp.SetActive(true);
         }
-    }
+        else
+        {
+            if (inactiveObjects.Count > 0)
+            {
+                int randomIndex = Random.Range(0, inactiveObjects.Count);
+
+                activeObject = inactiveObjects[randomIndex];
+                activeObject.SetActive(true);
+
+                activeObject.transform.position = spawnPoint.transform.position;
+
+                inactiveObjects.RemoveAt(randomIndex);
+
+                activeObject.transform.parent = propParent.transform;
+
+                propsActivated++;
+            }
+           
+        }
+      
+}
 }

@@ -11,7 +11,7 @@ TagManager:
   - Prop
   - Platform
   - Obstacle
-  - Prop1
+  - PropMiddle
   layers:
   - Default
   - TransparentFX
