@@ -50,6 +50,9 @@ public class Prop1Spawner : MonoBehaviour
                 activeObject = inactiveObjects[randomIndex];
                 activeObject.SetActive(true);
 
+                GameObject Coin = activeObject.transform.GetChild(0).gameObject;
+                Coin.SetActive(true);
+
                 activeObject.transform.position = spawnPoint.transform.position;
 
                 inactiveObjects.RemoveAt(randomIndex);

@@ -41,6 +41,8 @@ public class MiddleSpawnProp : MonoBehaviour
 
             activeObjectMiddle = inactiveObjectsMiddle[randomIndex];
             activeObjectMiddle.SetActive(true);
+            GameObject Coin = activeObjectMiddle.transform.GetChild(0).gameObject;
+            Coin.SetActive(true);
 
             activeObjectMiddle.transform.position = spawnPoint.transform.position;
 
