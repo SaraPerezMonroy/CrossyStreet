@@ -2445,22 +2445,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1879269269}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &89800134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 89800132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a70ec529c6c1f41be2d0a1d3eb31bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 388124115}
-  - {fileID: 2100775447}
-  propSpeed: 3
 --- !u!65 &89800135
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2509,6 +2493,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &89800139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89800132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7770208b4ba414a887c345209911fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 388124115}
+  - {fileID: 2100775447}
+  propSpeed: 3
+  car: {fileID: 0}
+  distanciaMinima: 5
+  carBeep: {fileID: 294802296}
+  soundProbability: 0
 --- !u!1001 &90146220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3117,7 +3121,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4039760522333299728, guid: b04748140b66e554b8500b84740eac36,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 116746683}
+      addedObject: {fileID: 116746688}
   m_SourcePrefab: {fileID: 100100000, guid: b04748140b66e554b8500b84740eac36, type: 3}
 --- !u!4 &116746681 stripped
 Transform:
@@ -3131,22 +3135,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 116746680}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &116746683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 116746682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a70ec529c6c1f41be2d0a1d3eb31bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 1182491037}
-  - {fileID: 1258296018}
-  propSpeed: 4
 --- !u!65 &116746684
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3195,6 +3183,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &116746688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116746682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7770208b4ba414a887c345209911fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 1182491037}
+  - {fileID: 1258296018}
+  propSpeed: 4
+  car: {fileID: 0}
+  distanciaMinima: 5
+  carBeep: {fileID: 294802296}
+  soundProbability: 0
 --- !u!1 &118305357 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6127474089745594888, guid: 8d1995941dd5a1847b12bd7e1566a254,
@@ -3887,6 +3895,10 @@ MonoBehaviour:
   - {fileID: 613983466}
   - {fileID: 613983465}
   propSpeed: 2
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!65 &138493111
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7105,6 +7117,10 @@ MonoBehaviour:
   - {fileID: 1062598757}
   - {fileID: 159504366}
   propSpeed: 2
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!65 &231321206
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7818,6 +7834,10 @@ MonoBehaviour:
   - {fileID: 613983466}
   - {fileID: 613983465}
   propSpeed: 2
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!65 &243940644
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8110,6 +8130,10 @@ MonoBehaviour:
   - {fileID: 413815419}
   - {fileID: 338722125}
   propSpeed: 5
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!4 &270004872 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4111116904279595642, guid: 60d65e4eed2ca444d9a5224665294248,
@@ -8901,7 +8925,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4039760522333299728, guid: b04748140b66e554b8500b84740eac36,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2102457408}
+      addedObject: {fileID: 2102457413}
   m_SourcePrefab: {fileID: 100100000, guid: b04748140b66e554b8500b84740eac36, type: 3}
 --- !u!1001 &278630866
 PrefabInstance:
@@ -9375,22 +9399,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1622517386}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &282379304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 282379302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a70ec529c6c1f41be2d0a1d3eb31bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 751242972}
-  - {fileID: 149727677}
-  propSpeed: 3
 --- !u!65 &282379305
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9439,6 +9447,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &282379309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282379302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7770208b4ba414a887c345209911fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 751242972}
+  - {fileID: 149727677}
+  propSpeed: 5
+  car: {fileID: 0}
+  distanciaMinima: 5
+  carBeep: {fileID: 294802296}
+  soundProbability: 0
 --- !u!4 &284072440 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8798376893052500693, guid: f016d87824371eb4bb1f1db99e4c309b,
@@ -9491,6 +9519,134 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 999454330}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &294802294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 294802295}
+  - component: {fileID: 294802296}
+  m_Layer: 0
+  m_Name: TrainHorn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &294802295
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294802294}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2052034777}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &294802296
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294802294}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 25dc9df67c34d5a47abb72dac74fb120, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.188
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &295811461
 GameObject:
   m_ObjectHideFlags: 0
@@ -11084,7 +11240,7 @@ PrefabInstance:
     - target: {fileID: 6127474089745594888, guid: 8d1995941dd5a1847b12bd7e1566a254,
         type: 3}
       propertyPath: m_Name
-      value: PROP1_Water-RtoL (5)
+      value: PROP1_Train-RtoL (5)
       objectReference: {fileID: 0}
     - target: {fileID: 6127474089745594888, guid: 8d1995941dd5a1847b12bd7e1566a254,
         type: 3}
@@ -11937,6 +12093,10 @@ MonoBehaviour:
   - {fileID: 1241205408}
   - {fileID: 1241205408}
   propSpeed: 2.5
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!65 &366152165
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13322,7 +13482,7 @@ GameObject:
   - component: {fileID: 401599454}
   - component: {fileID: 401599453}
   m_Layer: 0
-  m_Name: Audio
+  m_Name: CoinAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13340,7 +13500,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b6311a3eb347cd748b4099ce28ae9841, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.761
+  m_Volume: 0.916
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -13991,6 +14151,10 @@ MonoBehaviour:
   - {fileID: 1062598757}
   - {fileID: 159504366}
   propSpeed: 2
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!65 &424011001
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14986,7 +15150,7 @@ PrefabInstance:
     - target: {fileID: 924090439247847619, guid: ef475d86e8b3d5042a5a178068b20e10,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.2600021
+      value: 4.760002
       objectReference: {fileID: 0}
     - target: {fileID: 924090439247847619, guid: ef475d86e8b3d5042a5a178068b20e10,
         type: 3}
@@ -16361,6 +16525,10 @@ MonoBehaviour:
   - {fileID: 613983466}
   - {fileID: 613983465}
   propSpeed: 2
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!65 &523075894
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17112,7 +17280,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4039760522333299728, guid: b04748140b66e554b8500b84740eac36,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 552075673}
+      addedObject: {fileID: 552075678}
   m_SourcePrefab: {fileID: 100100000, guid: b04748140b66e554b8500b84740eac36, type: 3}
 --- !u!4 &552075671 stripped
 Transform:
@@ -17126,22 +17294,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 552075670}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &552075673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 552075672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a70ec529c6c1f41be2d0a1d3eb31bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 1453063532}
-  - {fileID: 2072961804}
-  propSpeed: 3
 --- !u!65 &552075674
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17190,6 +17342,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &552075678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552075672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7770208b4ba414a887c345209911fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 1453063532}
+  - {fileID: 2072961804}
+  propSpeed: 3
+  car: {fileID: 0}
+  distanciaMinima: 5
+  carBeep: {fileID: 294802296}
+  soundProbability: 0
 --- !u!1001 &554850025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17996,22 +18168,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 986895760}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &605677193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 605677191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a70ec529c6c1f41be2d0a1d3eb31bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 1689982987}
-  - {fileID: 506523383}
-  propSpeed: 7
 --- !u!65 &605677194
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18060,6 +18216,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &605677198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605677191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7770208b4ba414a887c345209911fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 1689982987}
+  - {fileID: 506523383}
+  propSpeed: 7
+  car: {fileID: 0}
+  distanciaMinima: 5
+  carBeep: {fileID: 294802296}
+  soundProbability: 0
 --- !u!4 &613266599 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 523860081394211607, guid: 9d9016a93e2afb14993f9ab42254fc2b,
@@ -19738,13 +19914,23 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 422873472}
+    m_TransformParent: {fileID: 903245982}
     m_Modifications:
+    - target: {fileID: 422813717284610702, guid: 8d1995941dd5a1847b12bd7e1566a254,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 1895425063152210391, guid: 8d1995941dd5a1847b12bd7e1566a254,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 06eb06015de9b664da7cea9f842487f6, type: 2}
+    - target: {fileID: 1971861649826220366, guid: 8d1995941dd5a1847b12bd7e1566a254,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.722473
+      objectReference: {fileID: 0}
     - target: {fileID: 3098842479980144157, guid: 8d1995941dd5a1847b12bd7e1566a254,
         type: 3}
       propertyPath: m_LocalScale.z
@@ -19768,17 +19954,17 @@ PrefabInstance:
     - target: {fileID: 4661882760498355752, guid: 8d1995941dd5a1847b12bd7e1566a254,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -63.039543
       objectReference: {fileID: 0}
     - target: {fileID: 4661882760498355752, guid: 8d1995941dd5a1847b12bd7e1566a254,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.060000002
       objectReference: {fileID: 0}
     - target: {fileID: 4661882760498355752, guid: 8d1995941dd5a1847b12bd7e1566a254,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 115.127144
       objectReference: {fileID: 0}
     - target: {fileID: 4661882760498355752, guid: 8d1995941dd5a1847b12bd7e1566a254,
         type: 3}
@@ -19823,7 +20009,7 @@ PrefabInstance:
     - target: {fileID: 6127474089745594888, guid: 8d1995941dd5a1847b12bd7e1566a254,
         type: 3}
       propertyPath: m_Name
-      value: PROP1_Water-RtoL (4)
+      value: PROP1_Train-RtoL (4)
       objectReference: {fileID: 0}
     - target: {fileID: 6127474089745594888, guid: 8d1995941dd5a1847b12bd7e1566a254,
         type: 3}
@@ -19839,6 +20025,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956753437566893762, guid: 8d1995941dd5a1847b12bd7e1566a254,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.277527
       objectReference: {fileID: 0}
     - target: {fileID: 7021268055091677025, guid: 8d1995941dd5a1847b12bd7e1566a254,
         type: 3}
@@ -20927,22 +21118,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1198673217}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &697793524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697793522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a70ec529c6c1f41be2d0a1d3eb31bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 1194535380}
-  - {fileID: 1123721348}
-  propSpeed: 6
 --- !u!65 &697793525
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20991,6 +21166,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &697793529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697793522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7770208b4ba414a887c345209911fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 1194535380}
+  - {fileID: 1123721348}
+  propSpeed: 5
+  car: {fileID: 0}
+  distanciaMinima: 5
+  carBeep: {fileID: 294802296}
+  soundProbability: 0
 --- !u!1001 &697861639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21987,6 +22182,134 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28d15fe4e2d206f4caf5083f3140d126, type: 3}
+--- !u!1 &713434909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 713434910}
+  - component: {fileID: 713434911}
+  m_Layer: 0
+  m_Name: CarBeep
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &713434910
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713434909}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2052034777}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &713434911
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713434909}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 20810ac5f80ad69418ae2e4cf87f9fc1, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.188
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &714576515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22359,6 +22682,134 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d9016a93e2afb14993f9ab42254fc2b, type: 3}
+--- !u!1 &720343426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 720343428}
+  - component: {fileID: 720343427}
+  m_Layer: 0
+  m_Name: DeathAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &720343427
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720343426}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1f66fa07b20636948a02694b4416bd22, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.188
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &720343428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720343426}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2052034777}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &723174793 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 523860081394211607, guid: 9d9016a93e2afb14993f9ab42254fc2b,
@@ -22521,10 +22972,6 @@ PrefabInstance:
         type: 3}
       insertIndex: 3
       addedObject: {fileID: 626274283}
-    - targetCorrespondingSourceObject: {fileID: 4661882760498355752, guid: 8d1995941dd5a1847b12bd7e1566a254,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1719004057}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d1995941dd5a1847b12bd7e1566a254, type: 3}
 --- !u!1001 &726145982
@@ -24069,6 +24516,10 @@ MonoBehaviour:
   - {fileID: 1241205408}
   - {fileID: 1241205408}
   propSpeed: 2.5
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!65 &768027649
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27329,6 +27780,7 @@ Transform:
   - {fileID: 1781229150}
   - {fileID: 7820434707784624653}
   - {fileID: 64750607}
+  - {fileID: 1719004057}
   - {fileID: 422873472}
   - {fileID: 710616020}
   - {fileID: 1243491357}
@@ -30307,7 +30759,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4039760522333299728, guid: b04748140b66e554b8500b84740eac36,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 605677193}
+      addedObject: {fileID: 605677198}
   m_SourcePrefab: {fileID: 100100000, guid: b04748140b66e554b8500b84740eac36, type: 3}
 --- !u!1001 &988538706
 PrefabInstance:
@@ -32061,22 +32513,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1591227217}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1049503145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049503143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a70ec529c6c1f41be2d0a1d3eb31bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 1039061838}
-  - {fileID: 582168306}
-  propSpeed: 3
 --- !u!65 &1049503146
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32125,6 +32561,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1049503150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049503143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7770208b4ba414a887c345209911fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 1039061838}
+  - {fileID: 582168306}
+  propSpeed: 5
+  car: {fileID: 0}
+  distanciaMinima: 5
+  carBeep: {fileID: 294802296}
+  soundProbability: 0
 --- !u!1001 &1049629464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33742,15 +34198,15 @@ RectTransform:
   m_GameObject: {fileID: 1094894306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.02787383, y: 0.02787383, z: 0.02787383}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 847772746}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 98, y: 42.6}
-  m_SizeDelta: {x: 1197.0967, y: 1113.0273}
+  m_AnchoredPosition: {x: 119.7, y: 14}
+  m_SizeDelta: {x: 1197.0967, y: 1113.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1094894308
 MonoBehaviour:
@@ -34287,7 +34743,7 @@ PrefabInstance:
     - target: {fileID: 1971861649826220366, guid: 8d1995941dd5a1847b12bd7e1566a254,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.592476
+      value: -14.02
       objectReference: {fileID: 0}
     - target: {fileID: 1971861649826220366, guid: 8d1995941dd5a1847b12bd7e1566a254,
         type: 3}
@@ -34392,7 +34848,7 @@ PrefabInstance:
     - target: {fileID: 6956753437566893762, guid: 8d1995941dd5a1847b12bd7e1566a254,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.407524
+      value: 13.75
       objectReference: {fileID: 0}
     - target: {fileID: 6956753437566893762, guid: 8d1995941dd5a1847b12bd7e1566a254,
         type: 3}
@@ -35821,6 +36277,10 @@ MonoBehaviour:
   - {fileID: 1062598757}
   - {fileID: 159504366}
   propSpeed: 2
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!65 &1156243431
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36934,7 +37394,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4039760522333299728, guid: b04748140b66e554b8500b84740eac36,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 697793524}
+      addedObject: {fileID: 697793529}
   m_SourcePrefab: {fileID: 100100000, guid: b04748140b66e554b8500b84740eac36, type: 3}
 --- !u!4 &1198813829 stripped
 Transform:
@@ -38671,7 +39131,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4039760522333299728, guid: b04748140b66e554b8500b84740eac36,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1253940399}
+      addedObject: {fileID: 1253940404}
   m_SourcePrefab: {fileID: 100100000, guid: b04748140b66e554b8500b84740eac36, type: 3}
 --- !u!4 &1253940397 stripped
 Transform:
@@ -38685,22 +39145,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1253940396}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1253940399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1253940398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a70ec529c6c1f41be2d0a1d3eb31bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 363930964}
-  - {fileID: 860854123}
-  propSpeed: 5
 --- !u!65 &1253940400
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38749,6 +39193,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1253940404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253940398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7770208b4ba414a887c345209911fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 363930964}
+  - {fileID: 860854123}
+  propSpeed: 5
+  car: {fileID: 0}
+  distanciaMinima: 5
+  carBeep: {fileID: 294802296}
+  soundProbability: 0
 --- !u!4 &1255435181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3736898987596309607, guid: 28d15fe4e2d206f4caf5083f3140d126,
@@ -39572,6 +40036,10 @@ MonoBehaviour:
   - {fileID: 413815419}
   - {fileID: 338722125}
   propSpeed: 5
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!4 &1289021490 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7672389612866742566, guid: ae30964696a50f847bba3eb8bd25305d,
@@ -40491,22 +40959,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1761535170}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1354639017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354639015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a70ec529c6c1f41be2d0a1d3eb31bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 565702897}
-  - {fileID: 736037226}
-  propSpeed: 7
 --- !u!65 &1354639018
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40555,6 +41007,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1354639022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354639015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7770208b4ba414a887c345209911fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 565702897}
+  - {fileID: 736037226}
+  propSpeed: 7
+  car: {fileID: 0}
+  distanciaMinima: 5
+  carBeep: {fileID: 294802296}
+  soundProbability: 0
 --- !u!1001 &1356259743
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41431,7 +41903,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4039760522333299728, guid: b04748140b66e554b8500b84740eac36,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1380124960}
+      addedObject: {fileID: 1380124965}
   m_SourcePrefab: {fileID: 100100000, guid: b04748140b66e554b8500b84740eac36, type: 3}
 --- !u!4 &1380124958 stripped
 Transform:
@@ -41445,22 +41917,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1380124957}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1380124960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1380124959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a70ec529c6c1f41be2d0a1d3eb31bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 1108707919}
-  - {fileID: 2080095241}
-  propSpeed: 5
 --- !u!65 &1380124961
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41509,6 +41965,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1380124965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380124959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7770208b4ba414a887c345209911fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 1108707919}
+  - {fileID: 1643721569}
+  propSpeed: 5
+  car: {fileID: 0}
+  distanciaMinima: 5
+  carBeep: {fileID: 294802296}
+  soundProbability: 0
 --- !u!4 &1381912104 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8798376893052500693, guid: f016d87824371eb4bb1f1db99e4c309b,
@@ -42939,6 +43415,10 @@ MonoBehaviour:
   - {fileID: 16834391}
   - {fileID: 1036512173}
   propSpeed: 1.5
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!65 &1432770753
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43559,6 +44039,10 @@ MonoBehaviour:
   - {fileID: 1241205408}
   - {fileID: 1241205408}
   propSpeed: 2.5
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!65 &1453423208
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46513,7 +46997,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4039760522333299728, guid: b04748140b66e554b8500b84740eac36,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1049503145}
+      addedObject: {fileID: 1049503150}
   m_SourcePrefab: {fileID: 100100000, guid: b04748140b66e554b8500b84740eac36, type: 3}
 --- !u!1 &1594716349 stripped
 GameObject:
@@ -46544,6 +47028,10 @@ MonoBehaviour:
   - {fileID: 271980352}
   - {fileID: 271980352}
   propSpeed: 2.5
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!65 &1594716352
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -47330,17 +47818,17 @@ PrefabInstance:
     - target: {fileID: 3700776257372487338, guid: b04748140b66e554b8500b84740eac36,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3700776257372487338, guid: b04748140b66e554b8500b84740eac36,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3700776257372487338, guid: b04748140b66e554b8500b84740eac36,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3700776257372487338, guid: b04748140b66e554b8500b84740eac36,
         type: 3}
@@ -47350,7 +47838,7 @@ PrefabInstance:
     - target: {fileID: 3700776257372487338, guid: b04748140b66e554b8500b84740eac36,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3700776257372487338, guid: b04748140b66e554b8500b84740eac36,
         type: 3}
@@ -47382,7 +47870,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4039760522333299728, guid: b04748140b66e554b8500b84740eac36,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 282379304}
+      addedObject: {fileID: 282379309}
   m_SourcePrefab: {fileID: 100100000, guid: b04748140b66e554b8500b84740eac36, type: 3}
 --- !u!1001 &1633753142
 PrefabInstance:
@@ -47748,6 +48236,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f016d87824371eb4bb1f1db99e4c309b, type: 3}
+--- !u!4 &1643721569 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6956753437566893762, guid: 8d1995941dd5a1847b12bd7e1566a254,
+    type: 3}
+  m_PrefabInstance: {fileID: 1108707916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1644499293
 GameObject:
   m_ObjectHideFlags: 0
@@ -50758,6 +51252,10 @@ MonoBehaviour:
   - {fileID: 413815419}
   - {fileID: 338722125}
   propSpeed: 5
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!1001 &1743211453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50971,8 +51469,11 @@ MonoBehaviour:
   waypoints:
   - {fileID: 271980353}
   - {fileID: 271980352}
-  - {fileID: 271980352}
   propSpeed: 2.5
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!65 &1746841192
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -51500,7 +52001,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4039760522333299728, guid: b04748140b66e554b8500b84740eac36,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1354639017}
+      addedObject: {fileID: 1354639022}
   m_SourcePrefab: {fileID: 100100000, guid: b04748140b66e554b8500b84740eac36, type: 3}
 --- !u!1001 &1767635506
 PrefabInstance:
@@ -53764,7 +54265,7 @@ PrefabInstance:
     - target: {fileID: 924090439247847619, guid: ef475d86e8b3d5042a5a178068b20e10,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.18
+      value: 2.7600024
       objectReference: {fileID: 0}
     - target: {fileID: 924090439247847619, guid: ef475d86e8b3d5042a5a178068b20e10,
         type: 3}
@@ -54436,7 +54937,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4039760522333299728, guid: b04748140b66e554b8500b84740eac36,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 89800134}
+      addedObject: {fileID: 89800139}
   m_SourcePrefab: {fileID: 100100000, guid: b04748140b66e554b8500b84740eac36, type: 3}
 --- !u!1001 &1881106578
 PrefabInstance:
@@ -55685,6 +56186,10 @@ MonoBehaviour:
   - {fileID: 413815419}
   - {fileID: 338722125}
   propSpeed: 5
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!1001 &1953505387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56865,6 +57370,10 @@ MonoBehaviour:
   - {fileID: 16834391}
   - {fileID: 1036512173}
   propSpeed: 1.5
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!65 &1996251022
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -56984,6 +57493,134 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f016d87824371eb4bb1f1db99e4c309b, type: 3}
+--- !u!1 &2011752612
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2011752613}
+  - component: {fileID: 2011752614}
+  m_Layer: 0
+  m_Name: BGMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2011752613
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011752612}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2052034777}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &2011752614
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011752612}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: bdf480ac130ae334a87717a38210af2e, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.062
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &2013655276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57474,6 +58111,10 @@ MonoBehaviour:
   - {fileID: 271980352}
   - {fileID: 271980352}
   propSpeed: 2.5
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!65 &2038568894
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -58064,7 +58705,9 @@ MonoBehaviour:
   gameUI: {fileID: 477479375}
   textEnding: {fileID: 703091103}
   newRecordLabel: {fileID: 180140654}
-  crownImage: {fileID: 651533447}
+  crownImage: {fileID: 1094894306}
+  deathSound: {fileID: 720343427}
+  bgMusic: {fileID: 2011752614}
   textSteps: {fileID: 841074781}
   record: 0
   newRecord: 0
@@ -58084,6 +58727,10 @@ Transform:
   - {fileID: 847772746}
   - {fileID: 477479376}
   - {fileID: 401599454}
+  - {fileID: 720343428}
+  - {fileID: 713434910}
+  - {fileID: 294802295}
+  - {fileID: 2011752613}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2053197384 stripped
@@ -60339,6 +60986,10 @@ MonoBehaviour:
   - {fileID: 16834391}
   - {fileID: 1036512173}
   propSpeed: 1.5
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!65 &2093793832
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -60614,22 +61265,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 277673712}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2102457408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102457406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a70ec529c6c1f41be2d0a1d3eb31bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 500672872}
-  - {fileID: 66714009}
-  propSpeed: 10
 --- !u!65 &2102457409
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -60678,6 +61313,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2102457413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102457406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7770208b4ba414a887c345209911fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 500672872}
+  - {fileID: 66714009}
+  propSpeed: 5
+  car: {fileID: 0}
+  distanciaMinima: 5
+  carBeep: {fileID: 294802296}
+  soundProbability: 0
 --- !u!1001 &2109733406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60807,6 +61462,10 @@ MonoBehaviour:
   - {fileID: 613983466}
   - {fileID: 613983465}
   propSpeed: 2
+  car: {fileID: 0}
+  distanciaMinima: 3
+  carBeep: {fileID: 713434911}
+  soundProbability: 0
 --- !u!65 &2109733410
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -61837,7 +62496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1a8355c9babc24ea3f50dbad16ea90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prop1Spawn: {fileID: 0}
+  prop1Spawn: {fileID: 1256493945}
   middleSpawnProp: {fileID: 59470077}
 --- !u!4 &2139007209 stripped
 Transform:

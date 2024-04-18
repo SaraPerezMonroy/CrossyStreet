@@ -33,6 +33,8 @@ public class UI : MonoBehaviour
     public TextMeshProUGUI newRecordLabel;
 
     public GameObject crownImage;
+    public AudioSource deathSound;
+    public AudioSource bgMusic;
 
     [SerializeField]
     public TextMeshProUGUI textSteps;
@@ -101,6 +103,8 @@ public class UI : MonoBehaviour
 
     public void GameEnding()
     {
+        bgMusic.Pause();
+        deathSound.Play();
         gameEndingScreen.SetActive(true);
         textEnding.text = "Total coins: " + coinAmount + "\nTotal steps: " + playerBehaviour.steps;
         gameUI.SetActive(false);
