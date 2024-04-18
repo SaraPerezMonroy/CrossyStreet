@@ -21,7 +21,6 @@ public class LevelBehaviour : MonoBehaviour
         SwipeController.instance.OnSwipe += MoveTarget;
     }
 
-
     public void OnDisable()
     {
         SwipeController.instance.OnSwipe -= MoveTarget;

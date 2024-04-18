@@ -16,24 +16,24 @@ public class MiddleSpawnProp : MonoBehaviour
 
     private void Start()
     {
-        foreach (GameObject prefab in objectsListMiddle)
+        foreach (GameObject prefab in objectsListMiddle) // Para cada objeto que esté en la lista
         {
-            prefab.SetActive(false);
-            inactiveObjectsMiddle.Add(prefab);
+            prefab.SetActive(false); // Lo desactivamos
+            inactiveObjectsMiddle.Add(prefab); // Lo movemos a inactivos
         }
 
-        SpawnRandomPrefab();
+        SpawnProp();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == activeObjectMiddle)
+        if (other.gameObject == activeObjectMiddle) // Cuando sale de este trigger, se lo pasamos a la lista de activos 
         {
-            SpawnRandomPrefab();
+            SpawnProp();
         }
     }
 
-    public void SpawnRandomPrefab()
+    public void SpawnProp()
     {
         if (inactiveObjectsMiddle.Count > 0)
         {
@@ -41,7 +41,7 @@ public class MiddleSpawnProp : MonoBehaviour
 
             activeObjectMiddle = inactiveObjectsMiddle[randomIndex];
             activeObjectMiddle.SetActive(true);
-            GameObject Coin = activeObjectMiddle.transform.GetChild(0).gameObject;
+            GameObject Coin = activeObjectMiddle.transform.GetChild(0).gameObject; // Cada vez que desactivamos el prop, activamos su primer hijo (la moneda)
             Coin.SetActive(true);
 
             activeObjectMiddle.transform.position = spawnPoint.transform.position;

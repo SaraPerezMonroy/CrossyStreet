@@ -16,8 +16,6 @@ public class SwipeController : MonoBehaviour
    
     public delegate void Swipe(Vector3 direction);
     public event Swipe OnSwipe;
-
-
     private void Awake()
     {
         if (SwipeController.instance == null)

@@ -9,16 +9,15 @@ public class PropDespawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Prop"))
+        if (other.CompareTag("Prop")) 
         {
-            // Si el objeto que entra en el otro collider es un "prop", añadirlo a la lista de prefabs a spawnear
-            prop1Spawn.inactiveObjects.Add(other.gameObject);
-            other.gameObject.SetActive(false);
-            other.gameObject.transform.parent = null;
+            prop1Spawn.inactiveObjects.Add(other.gameObject); // Se añade a la lista de props del inicio el objeto que entra al collider, si es "prop", que son los de uno
+            other.gameObject.SetActive(false); // Se desactiva 
+            other.gameObject.transform.parent = null; // Se le quita el emparentado
         }
         if (other.CompareTag("PropMiddle"))
         {
-            middleSpawnProp.inactiveObjectsMiddle.Add(other.gameObject);
+            middleSpawnProp.inactiveObjectsMiddle.Add(other.gameObject); // Se añade a la lista de props de la mitad (los infinitos) el objeto que entra al collider, si es "propMiddle", que son los de dos y cuatro saltos y los descansos
             other.gameObject.SetActive(false);
             other.gameObject.transform.parent = null;
         }

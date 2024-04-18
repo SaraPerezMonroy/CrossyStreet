@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
@@ -113,4 +114,14 @@ public class UI : MonoBehaviour
             newRecordLabel.text = "Record: " + record;
         }
     }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
 }

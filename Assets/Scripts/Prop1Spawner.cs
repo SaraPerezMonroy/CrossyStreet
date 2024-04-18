@@ -17,29 +17,29 @@ public class Prop1Spawner : MonoBehaviour
 
     private void Start()
     {
-        foreach (GameObject prefab in objectsList)
+        foreach (GameObject prefab in objectsList) // Para cada objeto que esté en la lista
         {
-            prefab.SetActive(false);
-            inactiveObjects.Add(prefab);
+            prefab.SetActive(false); // Lo desactivamos
+            inactiveObjects.Add(prefab); // Lo movemos a inactivos
         }
 
-        SpawnRandomPrefab();
+        SpawnProp();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == activeObject)
+        if (other.gameObject == activeObject) // Cuando sale de este trigger, se lo pasamos a la lista de activos
         {
-            SpawnRandomPrefab();
+            SpawnProp();
         }
     }
 
-    public void SpawnRandomPrefab()
+    public void SpawnProp()
     {
-        if (propsActivated <7 && propsActivated>5)
+        if (propsActivated <7 && propsActivated>5) // Si los props de 1 salto que se han activado son más de 5 y menos de 7 (6 jeje)
         {
-            this.enabled = false;
-            middleSpawnProp.SetActive(true);
+            this.enabled = false; // Desactivamos el script
+            middleSpawnProp.SetActive(true); // Activamos el otro spawner
         }
         else
         {
@@ -50,7 +50,7 @@ public class Prop1Spawner : MonoBehaviour
                 activeObject = inactiveObjects[randomIndex];
                 activeObject.SetActive(true);
 
-                GameObject Coin = activeObject.transform.GetChild(0).gameObject;
+                GameObject Coin = activeObject.transform.GetChild(0).gameObject; // Cada vez que desactivamos el prop, activamos su primer hijo (la moneda)
                 Coin.SetActive(true);
 
                 activeObject.transform.position = spawnPoint.transform.position;
