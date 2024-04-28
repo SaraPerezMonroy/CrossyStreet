@@ -12,6 +12,7 @@ TagManager:
   - Platform
   - Obstacle
   - PropMiddle
+  - Water
   layers:
   - Default
   - TransparentFX

@@ -40,9 +40,8 @@ public class CarBehaviour : MonoBehaviour
         if (distancia < distanciaMinima && !cantBeep)
         {
             
-            if(Random.Range(0.0f,1.0f) < 0.005f)
+            if(Random.Range(0.0f,1.0f) < 0.002f)
             {
-               // Debug.DrawLine(transform.position, PlayerBehaviour.instance.transform.position, Color.red, 10f);
                 carBeep.PlayOneShot(carBeep.clip);
                 cantBeep = true;
                 StartCoroutine(CanBeep());

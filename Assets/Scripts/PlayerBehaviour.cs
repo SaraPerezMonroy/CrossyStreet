@@ -29,6 +29,9 @@ public class PlayerBehaviour : MonoBehaviour
     public AudioSource coinSound;
     public int steps = 0;
 
+    public AudioSource waterEffect;
+    public AudioSource hitEffect;
+
     private void Awake()
     {
         player = this.gameObject;
@@ -135,9 +138,14 @@ public class PlayerBehaviour : MonoBehaviour
         }
         if(other.gameObject.CompareTag("Enemy"))
         {
-            UI.instance.GameEnding();
+            UI.instance.GameEnding(hitEffect);
             this.gameObject.SetActive(false);
-            SwipeController.instance.enabled = false;
+            playerIsDead = true;
+        }
+        if (other.gameObject.CompareTag("Water"))
+        {
+            UI.instance.GameEnding(waterEffect);
+            this.gameObject.SetActive(false);
             playerIsDead = true;
         }
     }

@@ -101,10 +101,12 @@ public class UI : MonoBehaviour
         textSteps.text = "Score: " + steps;
     }
 
-    public void GameEnding()
+    public void GameEnding(AudioSource deathEffect)
     {
         bgMusic.Pause();
+        deathEffect.Play();
         deathSound.Play();
+        SwipeController.instance.enabled = false;
         gameEndingScreen.SetActive(true);
         textEnding.text = "Total coins: " + coinAmount + "\nTotal steps: " + playerBehaviour.steps;
         gameUI.SetActive(false);

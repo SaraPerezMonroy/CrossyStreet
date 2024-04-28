@@ -36,7 +36,7 @@ public class Prop1Spawner : MonoBehaviour
 
     public void SpawnProp()
     {
-        if (propsActivated <7 && propsActivated>5) // Si los props de 1 salto que se han activado son más de 5 y menos de 7 (6 jeje)
+        if (propsActivated <4 && propsActivated>2) // Si los props de 1 salto que se han activado son más de 2 y menos de 4 (3 jeje)
         {
             this.enabled = false; // Desactivamos el script
             middleSpawnProp.SetActive(true); // Activamos el otro spawner
