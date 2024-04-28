@@ -32,6 +32,8 @@ public class PlayerBehaviour : MonoBehaviour
     public AudioSource waterEffect;
     public AudioSource hitEffect;
 
+    public ParticleSystem waterParticles;
+
     private void Awake()
     {
         player = this.gameObject;
@@ -144,6 +146,8 @@ public class PlayerBehaviour : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Water"))
         {
+            waterParticles.transform.position = transform.position;
+            waterParticles.Play();
             UI.instance.GameEnding(waterEffect);
             this.gameObject.SetActive(false);
             playerIsDead = true;

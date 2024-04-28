@@ -42,6 +42,8 @@ public class UI : MonoBehaviour
     public int record = 0;
     public bool newRecord = false;
 
+    public AudioListener audioListener;
+
     private void Awake()
     {
         if (UI.instance == null)
@@ -60,6 +62,7 @@ public class UI : MonoBehaviour
         record = PlayerPrefs.GetInt("Record", 0);
         coinAmount = PlayerPrefs.GetInt("Coin", 0);
         UpdateCoinText();
+
     }
 
     private void Update()
@@ -101,7 +104,7 @@ public class UI : MonoBehaviour
         textSteps.text = "Score: " + steps;
     }
 
-    public void GameEnding(AudioSource deathEffect)
+ public void GameEnding(AudioSource deathEffect)
     {
         bgMusic.Pause();
         deathEffect.Play();
@@ -110,6 +113,7 @@ public class UI : MonoBehaviour
         gameEndingScreen.SetActive(true);
         textEnding.text = "Total coins: " + coinAmount + "\nTotal steps: " + playerBehaviour.steps;
         gameUI.SetActive(false);
+        
         if (newRecord)
         {
             newRecordLabel.text = "New record!";
@@ -119,6 +123,14 @@ public class UI : MonoBehaviour
         {
             newRecordLabel.text = "Record: " + record;
         }
+
+        StartCoroutine(WaitAndDisableAudioListener());
+    }
+
+    IEnumerator WaitAndDisableAudioListener()
+    {
+        yield return new WaitForSeconds(3f);
+        audioListener.enabled = false;
     }
 
     public void RestartScene()
