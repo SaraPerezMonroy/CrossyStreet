@@ -38,6 +38,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         player = this.gameObject;
         steps = 0;
+
         if (PlayerBehaviour.instance == null)
         {
             PlayerBehaviour.instance = this;
@@ -46,17 +47,16 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Destroy(this);
         }
-
     }
 
-        public void Start()
+    public void Start()
     {
-        SwipeController.instance.OnSwipe += MoveTarget;
+        SwipeController.instance.OnSwipe += MoveTarget; // Suscribimos el método
     }
 
     public void OnDestroy()
     {
-        SwipeController.instance.OnSwipe -= MoveTarget;
+        SwipeController.instance.OnSwipe -= MoveTarget; // Desuscribimos el método cuando el script del swipr controller se desactiva
     }
 
     void MoveTarget(Vector3 direction)
@@ -68,15 +68,15 @@ public class PlayerBehaviour : MonoBehaviour
             if (Physics.Raycast(transform.position + new Vector3(0, 1f, 0), directionMove, out hitInfo, 1f))
             {
                 rayCast = hitInfo;
-                if (directionMove.x != 0)
+                if (directionMove.x != 0) // Si es cero, ajustamos realmente a cero, evitar diagonales
                 {
                     directionMove.x = 0;
                 }
             }
 
-            if (directionMove != Vector3.zero)
+            if (directionMove != Vector3.zero) // Si nos movemos en alguna dirección rotamos al jugador
             {
-                if (directionMove.x > 0)
+                if (directionMove.x > 0) 
                 {
                     transform.eulerAngles = new Vector3(0, 90f, 0);
                 }
@@ -98,17 +98,17 @@ public class PlayerBehaviour : MonoBehaviour
                 LeanTween.move(player, player.transform.position + (new Vector3(direction.x, 0, 0) - Vector3.up) / 2, timeAnim / 2);
             });
 
-                if (direction.normalized.z < 0 && backSteps < 3)  //abajo y que se sumen los stepsback
+                if (direction.normalized.z < 0 && backSteps < 3)  // Si nos movemos hacia atrás, sumamos a backsteps, recordar que solo puede caminar 3 hacia atrás
                 {
                     backSteps++;
                 }
 
-                if (direction.normalized.z > 0 && backSteps == 0 && levelBehaviour.stopAddingSteps == false) //arriba y que sume si los steps back son cero 
+                if (direction.normalized.z > 0 && backSteps == 0 && levelBehaviour.stopAddingSteps == false) // Si los backsteps son 0, dejamos que vuelva a sumar pasos adelante
                 {
                     steps++;
                     UI.instance.UpdateTextSteps(steps);
                 }
-                if (direction.normalized.z > 0 && backSteps > 0)
+                if (direction.normalized.z > 0 && backSteps > 0) // Si nos movemos hacia delante después de habernos movido hacia atrás, se van restando estos pasos atrás
                 {
                     backSteps--;
                 }
@@ -120,31 +120,31 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Terrain") || collision.gameObject.CompareTag("ProceduralTerrain") || collision.gameObject.CompareTag("Platform"))
         {
-            canJump = true;
+            canJump = true; // Si tocamos un tag de esos podremos saltar 
         }
         if (collision.gameObject.CompareTag("Platform"))
         {
-            platformTransform = collision.transform;
+            platformTransform = collision.transform; // Al chocar con un tronco, se hace hijo de este para que pueda arrastrarlo
             transform.SetParent(platformTransform); // Convertir al jugador en hijo de la plataforma
         }
 
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Coin"))
+        if (other.gameObject.CompareTag("Coin")) // Añadir 1 coin
         {
             UI.instance.coinAmount += 1;
             other.gameObject.SetActive(false);
             UI.instance.DisplayText();
             coinSound.Play();
         }
-        if(other.gameObject.CompareTag("Enemy"))
+        if(other.gameObject.CompareTag("Enemy")) // Nos mata tren o coche
         {
             UI.instance.GameEnding(hitEffect);
             this.gameObject.SetActive(false);
             playerIsDead = true;
         }
-        if (other.gameObject.CompareTag("Water"))
+        if (other.gameObject.CompareTag("Water")) // Nos caemos al agua
         {
             waterParticles.transform.position = transform.position;
             waterParticles.Play();
@@ -156,11 +156,11 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Platform"))
+        if (collision.gameObject.CompareTag("Platform")) // Si sale del contacto con la plataforma
         {
             platformTransform = null;
             transform.SetParent(null); // Convertir al jugador en hijo del mundo 
-            canJump = false;
+            canJump = false; // Para que no pueda moverse hasta estar en contacto con otro coso
         }
     }
 }

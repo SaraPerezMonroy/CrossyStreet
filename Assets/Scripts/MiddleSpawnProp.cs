@@ -11,7 +11,6 @@ public class MiddleSpawnProp : MonoBehaviour
     [SerializeField] GameObject spawnPoint;
     [SerializeField] GameObject propParent;
 
-    private int propsActivated = 0;
 
 
     private void Start()
@@ -35,22 +34,18 @@ public class MiddleSpawnProp : MonoBehaviour
 
     public void SpawnProp()
     {
-        if (inactiveObjectsMiddle.Count > 0)
+        if (inactiveObjectsMiddle.Count > 0) // Si los inactivos son mayor a 0
         {
-            int randomIndex = Random.Range(0, inactiveObjectsMiddle.Count);
+            int randomIndex = Random.Range(0, inactiveObjectsMiddle.Count);  // Cogemos uno aleatorio
+            activeObjectMiddle = inactiveObjectsMiddle[randomIndex]; // Metemos objeto aleatorio del array al objeto activo
+            activeObjectMiddle.SetActive(true); // Lo activamos
 
-            activeObjectMiddle = inactiveObjectsMiddle[randomIndex];
-            activeObjectMiddle.SetActive(true);
             GameObject Coin = activeObjectMiddle.transform.GetChild(0).gameObject; // Cada vez que desactivamos el prop, activamos su primer hijo (la moneda)
             Coin.SetActive(true);
 
-            activeObjectMiddle.transform.position = spawnPoint.transform.position;
-
-            inactiveObjectsMiddle.RemoveAt(randomIndex);
-
-            activeObjectMiddle.transform.parent = propParent.transform;
-
-            propsActivated++;
+            activeObjectMiddle.transform.position = spawnPoint.transform.position; // Movemos el activo al spawn
+            inactiveObjectsMiddle.RemoveAt(randomIndex); // Lo quitamos de inactivos
+            activeObjectMiddle.transform.parent = propParent.transform; // Lo metemos en una carpetita de props
         }
     }
 }

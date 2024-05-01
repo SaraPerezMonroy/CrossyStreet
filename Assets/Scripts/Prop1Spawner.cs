@@ -22,7 +22,6 @@ public class Prop1Spawner : MonoBehaviour
             prefab.SetActive(false); // Lo desactivamos
             inactiveObjects.Add(prefab); // Lo movemos a inactivos
         }
-
         SpawnProp();
     }
 
@@ -43,23 +42,19 @@ public class Prop1Spawner : MonoBehaviour
         }
         else
         {
-            if (inactiveObjects.Count > 0)
+            if (inactiveObjects.Count > 0) // Si los inactivos son mayor a 0
             {
-                int randomIndex = Random.Range(0, inactiveObjects.Count);
-
-                activeObject = inactiveObjects[randomIndex];
-                activeObject.SetActive(true);
+                int randomIndex = Random.Range(0, inactiveObjects.Count); // Cogemos uno aleatorio
+                activeObject = inactiveObjects[randomIndex]; // Metemos objeto aleatorio del array al objeto activo
+                activeObject.SetActive(true); // Lo activamos
 
                 GameObject Coin = activeObject.transform.GetChild(0).gameObject; // Cada vez que desactivamos el prop, activamos su primer hijo (la moneda)
                 Coin.SetActive(true);
 
-                activeObject.transform.position = spawnPoint.transform.position;
-
-                inactiveObjects.RemoveAt(randomIndex);
-
-                activeObject.transform.parent = propParent.transform;
-
-                propsActivated++;
+                activeObject.transform.position = spawnPoint.transform.position; // Movemos el activo al spawn
+                inactiveObjects.RemoveAt(randomIndex); // Lo quitamos de inactivos
+                activeObject.transform.parent = propParent.transform; // Lo metemos en una carpetita de props
+                propsActivated++; // Sumamos a los props activados 
             }
            
         }

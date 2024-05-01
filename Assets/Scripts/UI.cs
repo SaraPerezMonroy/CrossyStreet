@@ -58,27 +58,26 @@ public class UI : MonoBehaviour
 
     private void Start()
     {
-        playerBehaviour.steps = PlayerPrefs.GetInt("Score", 0);
-        record = PlayerPrefs.GetInt("Record", 0);
-        coinAmount = PlayerPrefs.GetInt("Coin", 0);
+        playerBehaviour.steps = PlayerPrefs.GetInt("Score", 0); // Almacena los pasitos como el score, si no tenemos nada, lo ponemos como 0
+        record = PlayerPrefs.GetInt("Record", 0); // Almacena el record 
+        coinAmount = PlayerPrefs.GetInt("Coin", 0); // Almacenamos los coins
         UpdateCoinText();
-
     }
 
     private void Update()
     {
-        PlayerPrefs.SetInt("Coins", coinAmount);
-        PlayerPrefs.Save();
-        UpdateCoinText();
-        PlayerPrefs.GetInt("Steps", playerBehaviour.steps);
-        PlayerPrefs.Save();
+        PlayerPrefs.SetInt("Coins", coinAmount); // Vamos actualizando la cantidad de monedas conseguidas
+        PlayerPrefs.Save(); // Lo guardamos
+        UpdateCoinText(); // Actualizamos el texto 
+        PlayerPrefs.GetInt("Steps", playerBehaviour.steps); // Actualizamos cantidad de pasos 
+        PlayerPrefs.Save(); // Guardamos en el almacenamiento del jugador
 
-        if (playerBehaviour.steps > record)
+        if (playerBehaviour.steps > record) // Si los pasos dados en este momento, son mayores a los guardados 
         {
-            record = playerBehaviour.steps;
+            record = playerBehaviour.steps; // El record es ahora los pasos dados en el juego actual
             PlayerPrefs.SetInt("Record", record);
             PlayerPrefs.Save();
-            newRecord = true;
+            newRecord = true; // Activamos para que sea nuevo record
         }
     }
 
@@ -104,7 +103,7 @@ public class UI : MonoBehaviour
         textSteps.text = "Score: " + steps;
     }
 
- public void GameEnding(AudioSource deathEffect)
+    public void GameEnding(AudioSource deathEffect)
     {
         bgMusic.Pause();
         deathEffect.Play();
@@ -127,7 +126,7 @@ public class UI : MonoBehaviour
         StartCoroutine(WaitAndDisableAudioListener());
     }
 
-    IEnumerator WaitAndDisableAudioListener()
+    IEnumerator WaitAndDisableAudioListener() // Para dejar de oír los coches y trenes
     {
         yield return new WaitForSeconds(3f);
         audioListener.enabled = false;

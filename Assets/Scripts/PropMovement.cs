@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PropMovement : MonoBehaviour
+public class PropMovement : MonoBehaviour 
 {
+    // Este script es parecido al del level behaviour, porque también necesitamos que se mueva con la misma lógica 
     public float animationDuration = 0.25f;
     public bool stopAddingSteps = false;
 
     public GameObject terrain;
     public int backSteps;
-    public bool canMove = true;
 
     public void Awake()
     {
@@ -28,7 +28,7 @@ public class PropMovement : MonoBehaviour
     public void MoveTarget(Vector3 direction)
     {
         RaycastHit hitInfo = PlayerBehaviour.rayCast;
-        if (PlayerBehaviour.instance != null && PlayerBehaviour.instance.canJump && canMove)
+        if (PlayerBehaviour.instance != null && PlayerBehaviour.instance.canJump) // Todo lo estamos usando del player
         {
             if (Physics.Raycast(PlayerBehaviour.instance.transform.position + new Vector3(0, 1f, 0), direction, out hitInfo, 1f))
             {
@@ -65,13 +65,6 @@ public class PropMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerBehaviour.instance.canJump = true;
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            canMove = false;
         }
     }
 

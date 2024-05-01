@@ -34,8 +34,8 @@ public class SwipeController : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0))
         {
-            clickInicial = Input.mousePosition;
-            click = Vector3.forward;
+            clickInicial = Input.mousePosition; // Guarda posición actual del ratón/dedo 
+            click = Vector3.forward; // Realizamos un clic solo
         }
 
         if(Input.GetMouseButtonUp(0))
@@ -47,7 +47,7 @@ public class SwipeController : MonoBehaviour
                 diferencia = diferencia.normalized; // Generamos un vector donde los números están del 1 al 0
                 diferencia.z = diferencia.y;
 
-                if(Mathf.Abs(diferencia.x) > Mathf.Abs(diferencia.z)) 
+                if(Mathf.Abs(diferencia.x) > Mathf.Abs(diferencia.z)) // Para que solo sea vertical u horizontal
                 {
                     diferencia.z = 0.0f;
                 }
@@ -58,20 +58,19 @@ public class SwipeController : MonoBehaviour
 
                 diferencia.y = 0.0f;
 
-                if (OnSwipe != null)
+                if (OnSwipe != null) // Ver hacia dónde es el swipe
                 {
                     OnSwipe(diferencia);
                 }
             }
-               
-            else
+            else // Si no detectamos un swipe, pero sí un input, es un clic
             {
               Vector3 clickVect = click;
               if (OnSwipe != null)
               {
                    OnSwipe(clickVect);
               }
-                }
             }
         }
+    }
  }

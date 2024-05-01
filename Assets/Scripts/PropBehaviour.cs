@@ -11,7 +11,7 @@ public class PropBehaviour : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (transform.position != waypoints[0].position)
+        if (transform.position != waypoints[0].position) // Para que se mueva de un waypoint al otro
         {
             transform.position = Vector3.MoveTowards(transform.position, waypoints[0].position, propSpeed * Time.deltaTime);
         }
@@ -24,11 +24,11 @@ public class PropBehaviour : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            float centerZ = transform.position.z;
+            float centerZ = transform.position.z; 
             Vector3 playerPosition = collision.transform.position;
             playerPosition.z = centerZ; // Calcular el centro del tronco en el eje z y establecerlo para el jugador
-            collision.transform.position = playerPosition;
-            collision.transform.SetParent(this.transform);
+            collision.transform.position = playerPosition; // Convertir la posición del player en la del objeto con el que colisionó
+            collision.transform.SetParent(this.transform); // Emparentarlo
         }
     }
 
@@ -36,7 +36,7 @@ public class PropBehaviour : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.transform.SetParent(null);
+            collision.transform.SetParent(null); // Quitarle el parent
         }
     }
 }
