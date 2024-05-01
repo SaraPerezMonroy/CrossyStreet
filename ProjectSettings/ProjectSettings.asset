@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: MonroysCompany
-  productName: CrossyHighwayToHell
+  productName: CrossyStreet
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -135,9 +135,12 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 1.2
+  bundleVersion: 2
   preloadedAssets:
   - {fileID: 0}
+  - {fileID: -3583715806920535308, guid: 6f18a7f075cf7984d80c6e145212ed75, type: 2}
+  - {fileID: 11400000, guid: 0aa02d577fa4f254ca46bd2a6fe1e8aa, type: 2}
+  - {fileID: 11400000, guid: 37c6abd7b0ca76745a207b37847e2e59, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
